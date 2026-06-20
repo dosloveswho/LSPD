@@ -10,14 +10,14 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="LSPD — Police Records Management System">
 <meta property="og:description" content="Secure Police Records Management System">
-<meta property="og:url" content="https://pnp.appwrite.network/">
-<meta property="og:image" content="https://pnp.appwrite.network/PHRRP.png">
+<meta property="og:url" content="https://lspdd.appwrite.network/">
+<meta property="og:image" content="https://lspdd.appwrite.network/BANNER.png">
 
 <!-- Discord / Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LSPD — Police Records Management System">
 <meta name="twitter:description" content="Secure Police Records Management System">
-<meta name="twitter:image" content="https://pnp.appwrite.network/PHRRP.png">
+<meta name="twitter:image" content="https://lspdd.appwrite.network/BANNER.png">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -75,6 +75,128 @@ html, body { height: 100%; background: var(--navy-900); color: var(--white); fon
               radial-gradient(ellipse 50% 60% at 80% 20%, rgba(9,30,58,0.8) 0%, transparent 70%);
   pointer-events: none;
 }
+#login-page::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 40% 40% at 50% 50%, rgba(201,162,39,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  animation: bgPulse 8s ease-in-out infinite alternate;
+}
+@keyframes bgPulse {
+  0%   { opacity: 0.4; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.08); }
+}
+
+/* ── AUTH BACKGROUND CANVAS (particles + rain) ── */
+#bg-canvas {
+  position: fixed; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── FLOATING ORBS ── */
+.bg-orb {
+  position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+  filter: blur(90px);
+}
+.bg-orb-1 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,162,39,0.09) 0%, transparent 70%);
+  top: -140px; left: -140px;
+  animation: orbFloat1 14s ease-in-out infinite alternate;
+}
+.bg-orb-2 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(9,30,80,0.55) 0%, transparent 70%);
+  bottom: -100px; right: -100px;
+  animation: orbFloat2 17s ease-in-out infinite alternate;
+}
+.bg-orb-3 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(201,162,39,0.06) 0%, transparent 70%);
+  top: 45%; right: 12%;
+  animation: orbFloat3 11s ease-in-out infinite alternate;
+}
+.bg-orb-4 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(41,128,185,0.08) 0%, transparent 70%);
+  top: 20%; left: 8%;
+  animation: orbFloat4 13s ease-in-out infinite alternate;
+}
+@keyframes orbFloat1 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(70px, 90px) scale(1.1); }
+}
+@keyframes orbFloat2 {
+  0%   { transform: translate(0,0) scale(1); }
+  100% { transform: translate(-60px, -80px) scale(1.08); }
+}
+@keyframes orbFloat3 {
+  0%   { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-70px) scale(0.9); }
+}
+@keyframes orbFloat4 {
+  0%   { transform: translate(0,0); }
+  100% { transform: translate(40px, 50px); }
+}
+
+/* ── LIGHT BEAMS ── */
+.auth-beam {
+  position: fixed; pointer-events: none; z-index: 0;
+  width: 2px; border-radius: 2px;
+  transform-origin: top center;
+}
+.auth-beam-1 {
+  height: 55vh;
+  background: linear-gradient(to bottom, rgba(201,162,39,0.0), rgba(201,162,39,0.12), rgba(201,162,39,0.0));
+  top: 0; left: 22%;
+  transform: rotate(15deg);
+  animation: beamSweep1 9s ease-in-out infinite alternate;
+}
+.auth-beam-2 {
+  height: 65vh;
+  background: linear-gradient(to bottom, rgba(201,162,39,0.0), rgba(201,162,39,0.08), rgba(201,162,39,0.0));
+  top: 0; right: 28%;
+  transform: rotate(-20deg);
+  animation: beamSweep2 12s ease-in-out infinite alternate;
+}
+.auth-beam-3 {
+  height: 40vh;
+  background: linear-gradient(to bottom, rgba(41,128,185,0.0), rgba(41,128,185,0.07), rgba(41,128,185,0.0));
+  top: 30%; left: 60%;
+  transform: rotate(8deg);
+  animation: beamSweep3 15s ease-in-out infinite alternate;
+}
+@keyframes beamSweep1 {
+  0%   { opacity: 0.3; transform: rotate(10deg) scaleY(0.8); }
+  50%  { opacity: 1;   transform: rotate(18deg) scaleY(1); }
+  100% { opacity: 0.4; transform: rotate(6deg)  scaleY(0.9); }
+}
+@keyframes beamSweep2 {
+  0%   { opacity: 0.2; transform: rotate(-15deg) scaleY(0.9); }
+  50%  { opacity: 0.9; transform: rotate(-25deg) scaleY(1.1); }
+  100% { opacity: 0.3; transform: rotate(-10deg) scaleY(0.8); }
+}
+@keyframes beamSweep3 {
+  0%   { opacity: 0.1; transform: rotate(5deg); }
+  100% { opacity: 0.7; transform: rotate(12deg); }
+}
+
+/* ── SCANLINES (login + register) ── */
+.scanlines {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(0,0,0,0.035) 3px, rgba(0,0,0,0.035) 4px
+  );
+}
+.scanlines-fixed {
+  position: fixed; inset: 0; pointer-events: none; z-index: 1;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 4px
+  );
+}
 .login-card {
   background: var(--navy-700); border: var(--border-active); border-radius: var(--radius-lg);
   padding: 48px 40px; width: 100%; max-width: 420px;
@@ -116,7 +238,7 @@ html, body { height: 100%; background: var(--navy-900); color: var(--white); fon
 
 #register-page { display: none; min-height: 100vh; background: var(--navy-900); position: relative; padding: 32px 16px; overflow-y: auto; }
 #register-page.active { display: block; }
-#register-page::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 80%, rgba(201,162,39,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+#register-page::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse 60% 50% at 20% 80%, rgba(201,162,39,0.06) 0%, transparent 70%); pointer-events: none; z-index: 0; animation: bgPulse 8s ease-in-out infinite alternate; }
 .register-card { background: var(--navy-700); border: var(--border-active); border-radius: var(--radius-lg); padding: 40px 36px; width: 100%; max-width: 520px; box-shadow: var(--shadow), var(--shadow-gold); position: relative; z-index: 1; margin: 0 auto; }
 .register-divider { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; }
 .register-divider span { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gray-400); white-space: nowrap; }
@@ -494,7 +616,17 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 <!-- ════════════════════════════════════════════════════════════════
      LOGIN PAGE
 ════════════════════════════════════════════════════════════════ -->
+<canvas id="bg-canvas"></canvas>
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+<div class="bg-orb bg-orb-3"></div>
+<div class="bg-orb bg-orb-4"></div>
+<div class="auth-beam auth-beam-1"></div>
+<div class="auth-beam auth-beam-2"></div>
+<div class="auth-beam auth-beam-3"></div>
+<div class="scanlines-fixed"></div>
 <div id="login-page">
+  <div class="scanlines"></div>
   <div class="login-card">
     <div class="login-logo">
       <img class="pnp-logo-img" src="l0C3IJF.png?v=2" alt="LSPD Logo">
@@ -556,7 +688,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
     <div class="register-divider" style="margin-top:20px;"><span>Police Credentials (Optional)</span></div>
     <div class="reg-form-grid">
       <div class="form-group"><label>Badge Number</label><input type="text" id="r-badge" class="form-control" placeholder="e.g. LSPD-00123" oninput="onCredentialsChange()"></div>
-      <div class="form-group"><label>Rank / Title</label><select id="r-rank" class="form-control" onchange="onCredentialsChange()"><option value="">Select rank...</option><option>General</option><option>Lieutenant General</option><option>Major General</option><option>Brigadier General</option><option>Colonel</option><option>Lieutenant Colonel</option><option>Major</option><option>Captain</option><option>Lieutenant</option><option>Chief Master Sergeant</option><option>Master Sergeant</option><option>Staff Sergeant</option><option>Corporal</option><option>Police Officer</option><option>Cadet</option><option>Civilian</option></select></div>
+      <div class="form-group"><label>Rank / Title</label><select id="r-rank" class="form-control" onchange="onCredentialsChange()"><option value="">Select rank...</option><option>Chief of Police</option><option>Deputy Chief of Police</option><option>Assistant Chief</option><option>Commander</option><option>Assistant Commander</option><option>Captain</option><option>Lieutenant</option><option>Sergeant II</option><option>Sergeant I</option><option>Detective III</option><option>Detective II</option><option>Detective I</option><option>Officer III+1</option><option>Officer III</option><option>Officer II</option><option>Officer I</option><option>Rookie</option></select></div>
       <div class="form-group full"><label>Station / Unit Assignment</label><input type="text" id="r-station" class="form-control" placeholder="e.g. Quezon City Police District" oninput="onCredentialsChange()"></div>
     </div>
     <div id="rank-verify-notice" class="rank-verify-notice">
@@ -797,6 +929,9 @@ textarea.form-control { resize: vertical; min-height: 80px; }
             <button class="tab-btn" onclick="switchCitizenTab('weapon')">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px;"><path d="M18 3l3 3-9 9-4 1 1-4 9-9z"/><line x1="15" y1="6" x2="18" y2="9"/></svg>Weapon License
             </button>
+            <button class="tab-btn" onclick="switchCitizenTab('reinstatement')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Reinstatement
+            </button>
             <button class="tab-btn" onclick="switchCitizenTab('status')">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>My Applications
             </button>
@@ -874,6 +1009,64 @@ textarea.form-control { resize: vertical; min-height: 80px; }
             </div>
           </div>
 
+          <!-- Reinstatement Application Form -->
+          <div id="c-tab-reinstatement" class="view">
+            <div class="notice-banner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <span>Reinstatement is not guaranteed. All questions must be answered truthfully and thoroughly. False information will result in permanent blacklisting.</span>
+            </div>
+            <div id="reinstatement-already-applied" style="display:none;">
+              <div class="notice-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span id="reinstatement-app-status-msg">You already have a pending reinstatement application.</span></div>
+            </div>
+            <div id="reinstatement-form-wrap">
+              <div class="app-progress"><div class="progress-header"><span class="progress-label">Application Progress</span><span class="progress-count" id="reinstatement-progress-count">0 / 18 answered</span></div><div class="progress-bar-track"><div class="progress-bar-fill" id="reinstatement-progress-bar" style="width:0%"></div></div></div>
+
+              <!-- Personal Information -->
+              <div class="question-block">
+                <div class="question-num">Section 1 — Personal Information</div>
+                <div class="question-text">Provide your personal and account details.</div>
+                <div class="info-row" style="grid-template-columns:1fr 1fr;">
+                  <div class="form-group" style="margin-bottom:0"><label>Full Name (IC) *</label><input type="text" id="re-fullname" class="form-control" placeholder="Your in-character full name" oninput="updateReinstateProgress()"></div>
+                  <div class="form-group" style="margin-bottom:0"><label>Forum Name / Discord Username *</label><input type="text" id="re-discord" class="form-control" placeholder="e.g. Username#0000" oninput="updateReinstateProgress()"></div>
+                  <div class="form-group" style="margin-bottom:0"><label>Previous Badge Number</label><input type="text" id="re-badge" class="form-control" placeholder="e.g. LSPD-00123 (if applicable)" oninput="updateReinstateProgress()"></div>
+                  <div class="form-group" style="margin-bottom:0"><label>Current Phone Number (IC) *</label><input type="text" id="re-phone" class="form-control" placeholder="In-character phone number" oninput="updateReinstateProgress()"></div>
+                  <div class="form-group" style="margin-bottom:0"><label>Rank Held Before Leaving *</label><input type="text" id="re-prev-rank" class="form-control" placeholder="e.g. Police Officer" oninput="updateReinstateProgress()"></div>
+                  <div class="form-group" style="margin-bottom:0"><label>Date of Resignation / Termination *</label><input type="text" id="re-leave-date" class="form-control" placeholder="e.g. January 2025" oninput="updateReinstateProgress()"></div>
+                  <div class="form-group full" style="margin-bottom:0;grid-column:1/-1"><label>Reason for Leaving the Department *</label><textarea id="re-leave-reason" class="form-control" placeholder="Explain why you left..." rows="3" oninput="updateReinstateProgress()"></textarea></div>
+                </div>
+              </div>
+
+              <!-- Background Information -->
+              <div class="question-block">
+                <div class="question-num">Section 2 — Background Information</div>
+                <div class="question-text">Tell us about your previous service in the LSPD.</div>
+                <div class="info-row" style="grid-template-columns:1fr 1fr;">
+                  <div class="form-group" style="margin-bottom:0"><label>Length of Service *</label><textarea id="re-service-length" class="form-control" placeholder="How long did you serve in the LSPD before leaving?" rows="2" oninput="updateReinstateProgress()"></textarea></div>
+                  <div class="form-group" style="margin-bottom:0"><label>Division(s) Assigned To *</label><textarea id="re-divisions" class="form-control" placeholder="Which division(s) were you part of?" rows="2" oninput="updateReinstateProgress()"></textarea></div>
+                  <div class="form-group" style="margin-bottom:0;grid-column:1/-1"><label>Departure Status *</label>
+                    <select id="re-departure-status" class="form-control" oninput="updateReinstateProgress()">
+                      <option value="">— Select one —</option>
+                      <option value="Honorably Discharged">Honorably Discharged</option>
+                      <option value="Resigned">Resigned</option>
+                      <option value="Inactive Removal">Inactive Removal</option>
+                      <option value="Terminated">Terminated</option>
+                      <option value="Other">Other (Specify in Disciplinary section)</option>
+                    </select>
+                  </div>
+                  <div class="form-group" style="margin-bottom:0;grid-column:1/-1"><label>Disciplinary Actions During Previous Service *</label><textarea id="re-disciplinary" class="form-control" placeholder="Have you received any disciplinary actions during your previous service? If yes, explain. If none, write 'None'." rows="3" oninput="updateReinstateProgress()"></textarea></div>
+                </div>
+              </div>
+
+              <!-- Reinstatement Questions -->
+              <div id="reinstatement-questions-wrap"></div>
+
+              <div class="submit-footer">
+                <div class="note">By submitting, you confirm all answers are truthful. Misrepresentation will result in permanent blacklisting from the LSPD department.</div>
+                <button class="btn btn-primary" id="reinstatement-submit-btn" onclick="submitReinstateApp()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Submit Reinstatement</button>
+              </div>
+            </div>
+          </div>
+
           <!-- Status Tab -->
           <div id="c-tab-status" class="view">
             <div class="page-header" style="margin-bottom:16px;"><div><h2 style="font-size:17px;">My Application Status</h2></div>
@@ -898,9 +1091,14 @@ textarea.form-control { resize: vertical; min-height: 80px; }
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px;"><path d="M18 3l3 3-9 9-4 1 1-4 9-9z"/><line x1="15" y1="6" x2="18" y2="9"/></svg>Weapon License Apps
               <span class="nav-badge" id="admin-weapon-badge" style="display:none;background:var(--amber-400);margin-left:6px;">0</span>
             </button>
+            <button class="tab-btn" onclick="switchAdminAppTab('reinstatement')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Reinstatement Apps
+              <span class="nav-badge" id="admin-reinstatement-badge" style="display:none;background:var(--green-400);margin-left:6px;">0</span>
+            </button>
           </div>
           <div id="a-tab-police" class="view active"><div id="admin-police-list"><div class="no-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>No police applications</p><span>Submitted applications will appear here</span></div></div></div>
           <div id="a-tab-weapon" class="view"><div id="admin-weapon-list"><div class="no-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 3l3 3-9 9-4 1 1-4 9-9z"/><line x1="15" y1="6" x2="18" y2="9"/></svg><p>No weapon license applications</p><span>Submitted applications will appear here</span></div></div></div>
+          <div id="a-tab-reinstatement" class="view"><div id="admin-reinstatement-list"><div class="no-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg><p>No reinstatement applications</p><span>Submitted applications will appear here</span></div></div></div>
         </div>
 
       </div><!-- /page-applications -->
@@ -940,7 +1138,7 @@ let authToken   = null;
 let currentPage = 'dashboard';
 let searchTimers = {};
 
-const POLICE_RANKS = ['General','Lieutenant General','Major General','Brigadier General','Colonel','Lieutenant Colonel','Major','Captain','Lieutenant','Chief Master Sergeant','Master Sergeant','Staff Sergeant','Corporal','Police Officer','Cadet'];
+const POLICE_RANKS = ['Chief of Police','Deputy Chief of Police','Assistant Chief','Commander','Assistant Commander','Captain','Lieutenant','Sergeant II','Sergeant I','Detective III','Detective II','Detective I','Officer III+1','Officer III','Officer II','Officer I','Rookie'];
 
 // ════════════════════════════════════════════════════════════════
 // APPLICATION QUESTIONS
@@ -962,6 +1160,17 @@ const WEAPON_QUESTIONS = [
   { q: "What is the primary safety rule when handling a firearm?", hint: "State the rule clearly and explain its importance." },
   { q: "Under what circumstances is it legally and ethically justifiable to use a firearm in self-defense? Describe a scenario and explain the importance of proportional response.", hint: "Provide a clear scenario and discuss proportionality of force." },
   { q: "What are the proper steps for storing and maintaining a firearm to ensure both safety and functionality?", hint: "Cover storage, cleaning, inspection, and safety protocols." },
+];
+const REINSTATEMENT_QUESTIONS = [
+  { q: "Why do you wish to rejoin the Los Santos Police Department?", hint: "Be specific about your motivations and what has changed since you left." },
+  { q: "What makes you believe you are qualified to be reinstated?", hint: "Highlight your skills, experience, and any improvements since leaving." },
+  { q: "What have you learned since leaving the department?", hint: "Reflect honestly — personal growth, skills, or realizations." },
+  { q: "What contributions can you bring to the department upon your return?", hint: "Be specific about what value you add — skills, dedication, experience." },
+  { q: "Why should the department choose to reinstate you instead of requiring you to go through the standard recruitment process?", hint: "Make a compelling case for why reinstatement is the right path for you." },
+  { q: "If reinstated, are you willing to follow all department policies, regulations, and orders from superior officers? (Answer Yes or No and explain.)", hint: "Answer clearly. If yes, explain your commitment. If no, explain why." },
+  { q: "Are you prepared to start at a lower rank if required? (Answer Yes or No and explain.)", hint: "Answer honestly and explain your stance." },
+  { q: "Have you been involved in any criminal activity or received any administrative punishments since leaving the department? If yes, explain.", hint: "Be truthful. Concealing this information will result in disqualification." },
+  { q: "Have you previously submitted a reinstatement application? If yes, provide the outcome.", hint: "State Yes or No. If yes, explain when and what the decision was." },
 ];
 
 // ════════════════════════════════════════════════════════════════
@@ -1212,6 +1421,7 @@ function initApp() {
   // Build application forms
   buildPoliceQuestions();
   buildWeaponQuestions();
+  buildReinstateQuestions();
   // Start real-time polling
   startPolling();
   navigateTo('dashboard');
@@ -1578,7 +1788,7 @@ async function createUser(){const body={username:document.getElementById('u-user
 // ════════════════════════════════════════════════════════════════
 
 // General Officer ranks that can approve/reject applications
-const REVIEWER_RANKS = ['General','Lieutenant General','Major General','Brigadier General'];
+const REVIEWER_RANKS = ['Chief of Police','Deputy Chief of Police','Assistant Chief','Commander','Assistant Commander'];
 
 function canReviewApps() {
   if (!currentUser) return false;
@@ -1612,7 +1822,7 @@ function loadApplicationsPage() {
     const span = notice.querySelector('span');
     if (viewOnly) {
       notice.style.display = 'flex';
-      span.textContent = 'View only — only General Officers (General, Lt. General, Maj. General, Brig. General) and Superadmins can approve or reject applications.';
+      span.textContent = 'View only — only Command Staff (Assistant Commander and above) and Superadmins can approve or reject applications.';
     } else {
       notice.style.display = 'none';
     }
@@ -1643,6 +1853,16 @@ function buildWeaponQuestions() {
       <textarea id="wq-${i}" class="form-control" placeholder="${escHtml(item.hint)}" rows="4" oninput="updateWeaponProgress()"></textarea>
     </div>`).join('');
 }
+function buildReinstateQuestions() {
+  const wrap = document.getElementById('reinstatement-questions-wrap');
+  if (!wrap) return;
+  wrap.innerHTML = REINSTATEMENT_QUESTIONS.map((item, i) => `
+    <div class="question-block">
+      <div class="question-num">Reinstatement Question ${i + 1} / ${REINSTATEMENT_QUESTIONS.length}</div>
+      <div class="question-text">${escHtml(item.q)}</div>
+      <textarea id="rq-${i}" class="form-control" placeholder="${escHtml(item.hint)}" rows="4" oninput="updateReinstateProgress()"></textarea>
+    </div>`).join('');
+}
 
 // — Progress bars —
 function updatePoliceProgress() {
@@ -1667,6 +1887,22 @@ function updateWeaponProgress() {
   const filled = q1 + qAnswered;
   document.getElementById('weapon-progress-count').textContent = filled + ' / ' + total + ' answered';
   document.getElementById('weapon-progress-bar').style.width = Math.round(filled / total * 100) + '%';
+}
+function updateReinstateProgress() {
+  const TOTAL = 18; // 7 personal/background fields + 9 reinstatement questions + dept status + disciplinary
+  const fields = [
+    document.getElementById('re-fullname'), document.getElementById('re-discord'),
+    document.getElementById('re-phone'), document.getElementById('re-prev-rank'),
+    document.getElementById('re-leave-date'), document.getElementById('re-leave-reason'),
+    document.getElementById('re-service-length'), document.getElementById('re-divisions'),
+    document.getElementById('re-departure-status'),
+    document.getElementById('re-disciplinary'),
+    ...REINSTATEMENT_QUESTIONS.map((_,i) => document.getElementById('rq-'+i))
+  ];
+  const filled = fields.filter(f => f && f.value.trim().length >= 2).length;
+  const count = Math.min(filled, TOTAL);
+  document.getElementById('reinstatement-progress-count').textContent = count + ' / ' + TOTAL + ' answered';
+  document.getElementById('reinstatement-progress-bar').style.width = Math.round(count / TOTAL * 100) + '%';
 }
 
 // — Stats photo upload (canvas-compressed to stay under Worker request limits) —
@@ -1774,13 +2010,13 @@ function handleEvidenceUpload(input) {
 
 // — Tab switching —
 function switchCitizenTab(tab) {
-  ['police','weapon','status'].forEach(t => { document.getElementById('c-tab-'+t).classList.toggle('active', t===tab); });
-  document.querySelectorAll('#citizen-tabs .tab-btn').forEach((btn, i) => { btn.classList.toggle('active', ['police','weapon','status'][i]===tab); });
+  ['police','weapon','reinstatement','status'].forEach(t => { document.getElementById('c-tab-'+t).classList.toggle('active', t===tab); });
+  document.querySelectorAll('#citizen-tabs .tab-btn').forEach((btn, i) => { btn.classList.toggle('active', ['police','weapon','reinstatement','status'][i]===tab); });
   if (tab === 'status') loadMyApplications();
 }
 function switchAdminAppTab(tab) {
-  ['police','weapon'].forEach(t => { document.getElementById('a-tab-'+t).classList.toggle('active', t===tab); });
-  document.querySelectorAll('#admin-app-tabs .tab-btn').forEach((btn, i) => { btn.classList.toggle('active', ['police','weapon'][i]===tab); });
+  ['police','weapon','reinstatement'].forEach(t => { document.getElementById('a-tab-'+t).classList.toggle('active', t===tab); });
+  document.querySelectorAll('#admin-app-tabs .tab-btn').forEach((btn, i) => { btn.classList.toggle('active', ['police','weapon','reinstatement'][i]===tab); });
 }
 
 // ════════════════════════════════════════════════════════════════
@@ -1869,6 +2105,40 @@ function showAlreadyApplied(type, status, rejectedAt) {
         document.getElementById('police-form-wrap').style.display = 'block';
       }
     }
+  } else if (type === 'reinstatement') {
+    const banner = document.getElementById('reinstatement-already-applied');
+    const msgEl  = document.getElementById('reinstatement-app-status-msg');
+    banner.style.display = 'block';
+
+    if (status === 'pending') {
+      banner.style.background   = 'rgba(41,128,185,0.10)';
+      banner.style.borderColor  = 'rgba(41,128,185,0.30)';
+      msgEl.style.color         = '#5DADE2';
+      msgEl.textContent = 'Your reinstatement application is under review. Please wait for a decision.';
+      document.getElementById('reinstatement-form-wrap').style.display = 'none';
+      removeCooldownBanner('reinstatement');
+    } else if (status === 'approved') {
+      banner.style.background   = 'rgba(26,122,78,0.12)';
+      banner.style.borderColor  = 'rgba(39,174,96,0.30)';
+      msgEl.style.color         = 'var(--green-400)';
+      msgEl.textContent = 'Your reinstatement application was approved! Welcome back.';
+      document.getElementById('reinstatement-form-wrap').style.display = 'none';
+      clearCooldown('reinstatement');
+      removeCooldownBanner('reinstatement');
+    } else { // rejected
+      banner.style.background   = 'rgba(192,57,43,0.10)';
+      banner.style.borderColor  = 'rgba(192,57,43,0.30)';
+      msgEl.style.color         = 'var(--red-400)';
+      if (remaining > 0) {
+        msgEl.textContent = 'Your reinstatement application was rejected.';
+        showCooldownBanner('reinstatement', remaining);
+        document.getElementById('reinstatement-form-wrap').style.display = 'none';
+      } else {
+        msgEl.textContent = 'Your reinstatement application was rejected. You may reapply.';
+        removeCooldownBanner('reinstatement');
+        document.getElementById('reinstatement-form-wrap').style.display = 'block';
+      }
+    }
   } else {
     const banner = document.getElementById('weapon-already-applied');
     const msgEl  = document.getElementById('weapon-app-status-msg');
@@ -1911,6 +2181,8 @@ function showCooldownBanner(type, remainingMs) {
   let el = document.getElementById(bannerId);
   const wrap = type === 'police'
     ? document.getElementById('police-already-applied')
+    : type === 'reinstatement'
+    ? document.getElementById('reinstatement-already-applied')
     : document.getElementById('weapon-already-applied');
   if (!wrap) return;
 
@@ -2114,13 +2386,76 @@ async function submitWeaponApp() {
   toast('Weapon license application submitted! Awaiting review.','success'); showAlreadyApplied('weapon','pending',null);
 }
 
+// — Submit Reinstatement App —
+async function submitReinstateApp() {
+  const cooldown = getCooldownRemaining('reinstatement');
+  if (cooldown > 0) {
+    toast('You are on a reapplication cooldown. Please wait ' + formatCooldownTime(cooldown) + ' before reapplying.', 'error');
+    return;
+  }
+
+  const fullname    = (document.getElementById('re-fullname')?.value||'').trim();
+  const discord     = (document.getElementById('re-discord')?.value||'').trim();
+  const phone       = (document.getElementById('re-phone')?.value||'').trim();
+  const prevRank    = (document.getElementById('re-prev-rank')?.value||'').trim();
+  const leaveDate   = (document.getElementById('re-leave-date')?.value||'').trim();
+  const leaveReason = (document.getElementById('re-leave-reason')?.value||'').trim();
+  const serviceLen  = (document.getElementById('re-service-length')?.value||'').trim();
+  const divisions   = (document.getElementById('re-divisions')?.value||'').trim();
+  const departure   = (document.getElementById('re-departure-status')?.value||'').trim();
+  const disciplinary= (document.getElementById('re-disciplinary')?.value||'').trim();
+
+  if (!fullname || !discord || !phone || !prevRank || !leaveDate || !leaveReason) {
+    toast('Please fill in all required personal information fields.', 'warning'); return;
+  }
+  if (!serviceLen || !divisions || !departure || !disciplinary) {
+    toast('Please complete all background information fields.', 'warning'); return;
+  }
+
+  const answers = REINSTATEMENT_QUESTIONS.map((_,i) => (document.getElementById('rq-'+i)?.value||'').trim());
+  const emptyIdx = answers.findIndex(a => a.length < 10);
+  if (emptyIdx !== -1) {
+    toast('Reinstatement Question ' + (emptyIdx+1) + ' needs a more complete answer.', 'warning'); return;
+  }
+
+  const btn = document.getElementById('reinstatement-submit-btn');
+  btn.disabled = true; btn.innerHTML = '<div class="spinner"></div> Submitting...';
+
+  const payload = {
+    application_type: 'reinstatement',
+    applicant_name: fullname,
+    submitted_by: currentUser?.username,
+    user_id: currentUser?.id,
+    answers: {
+      personal_info: { fullname, discord, phone, prev_rank: prevRank, leave_date: leaveDate, leave_reason: leaveReason },
+      background: { service_length: serviceLen, divisions, departure_status: departure, disciplinary },
+      rq1_why_rejoin: answers[0],
+      rq2_qualified: answers[1],
+      rq3_learned: answers[2],
+      rq4_contributions: answers[3],
+      rq5_why_not_recruitment: answers[4],
+      rq6_follow_policies: answers[5],
+      rq7_lower_rank: answers[6],
+      rq8_criminal_activity: answers[7],
+      rq9_previous_reinstatement: answers[8],
+    }
+  };
+
+  const res = await api('POST', '/applications/create', payload);
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Submit Reinstatement';
+  if (res.error) { toast(res.error, 'error'); return; }
+  toast('Reinstatement application submitted! Awaiting review.', 'success');
+  showAlreadyApplied('reinstatement', 'pending', null);
+}
+
 // — My Applications status tab —
 async function loadMyApplications() {
   const list=document.getElementById('my-apps-list');
   list.innerHTML='<div style="display:flex;align-items:center;gap:10px;padding:32px 20px;color:var(--gray-400);"><div class="spinner"></div> Loading...</div>';
   const res=await api('GET','/applications/my'); const apps=res.applications||[];
   if(!apps.length){list.innerHTML=`<div class="no-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><p>No applications submitted yet</p><span>Submit a police or weapon license application above</span></div>`;return;}
-  const typeLabel={police:'Police Application',weapon_license:'Weapon License Application'}; const typeClass={police:'badge-police',weapon_license:'badge-weapon'};
+  const typeLabel={police:'Police Application',weapon_license:'Weapon License Application',reinstatement:'Reinstatement Application'}; const typeClass={police:'badge-police',weapon_license:'badge-weapon',reinstatement:'badge-pending'};
   list.innerHTML=apps.map(a=>{
     const info=(()=>{try{return JSON.parse(a.answers||'{}');}catch{return{};}})();
     const personalName=info.personal_info?.name||a.applicant_name||'—';
@@ -2138,7 +2473,7 @@ async function checkExistingApps() {
   // For each type, find the most-recent app (any status)
   const latestByType = {};
   for (const a of apps) {
-    const t = a.application_type === 'weapon_license' ? 'weapon' : a.application_type;
+    const t = a.application_type === 'weapon_license' ? 'weapon' : a.application_type === 'reinstatement' ? 'reinstatement' : a.application_type;
     if (!latestByType[t] || new Date(a.created_at) > new Date(latestByType[t].created_at)) {
       latestByType[t] = a;
     }
@@ -2164,14 +2499,18 @@ async function loadAdminApps() {
   const res=await api('GET','/applications/all'); const apps=res.applications||[];
   const policeApps=apps.filter(a=>a.application_type==='police');
   const weaponApps=apps.filter(a=>a.application_type==='weapon_license');
+  const reinstateApps=apps.filter(a=>a.application_type==='reinstatement');
   const pendingPolice=policeApps.filter(a=>a.status==='pending').length;
   const pendingWeapon=weaponApps.filter(a=>a.status==='pending').length;
+  const pendingReinstate=reinstateApps.filter(a=>a.status==='pending').length;
   const pb=document.getElementById('admin-police-badge'); pb.textContent=pendingPolice; pb.style.display=pendingPolice>0?'inline-block':'none';
   const wb=document.getElementById('admin-weapon-badge'); wb.textContent=pendingWeapon; wb.style.display=pendingWeapon>0?'inline-block':'none';
-  const appsBadge=document.getElementById('apps-pending-badge'); const total=pendingPolice+pendingWeapon;
+  const rb=document.getElementById('admin-reinstatement-badge'); rb.textContent=pendingReinstate; rb.style.display=pendingReinstate>0?'inline-block':'none';
+  const appsBadge=document.getElementById('apps-pending-badge'); const total=pendingPolice+pendingWeapon+pendingReinstate;
   appsBadge.textContent=total; appsBadge.style.display=total>0?'block':'none';
   renderAdminAppList('admin-police-list',policeApps,'police');
   renderAdminAppList('admin-weapon-list',weaponApps,'weapon_license');
+  renderAdminAppList('admin-reinstatement-list',reinstateApps,'reinstatement');
 }
 function renderAdminAppList(containerId,apps,type) {
   const container=document.getElementById(containerId);
@@ -2182,18 +2521,42 @@ function buildAppCard(a,type) {
   const answers=(()=>{try{return JSON.parse(a.answers||'{}');}catch{return{};}})();
   const appId='app-body-'+a.id; const personal=answers.personal_info||{};
   const statusBadge=a.status==='pending'?'<span class="badge badge-pending">Pending Review</span>':a.status==='approved'?'<span class="badge badge-approved">Approved</span>':'<span class="badge badge-rejected">Rejected</span>';
+  const displayName = type==='reinstatement' ? (personal.fullname||a.applicant_name||'—') : (personal.name||a.applicant_name||'—');
   let qaHtml='';
   if(type==='police'){
     if(answers.stats_screenshot){qaHtml+=`<div class="qa-item"><div class="qa-question">Q2 / 10 — /stats Screenshot</div><div class="qa-screenshot"><img src="${escHtml(answers.stats_screenshot)}" alt="Stats" title="Click to preview" onclick="openPhotoLightbox('${escHtml(answers.stats_screenshot).replace(/'/g,"\\'")}','Stats Screenshot')" onerror="this.outerHTML='<span style=\\'font-size:12px;color:var(--red-400);\\'>Image failed to load</span>'"></div></div>`;}
     const policeQMap=[{key:'q3_motivation',label:'Q3 / 10 — Why join LSPD?'},{key:'q4_experience',label:'Q4 / 10 — Law enforcement experience'},{key:'q5_high_pressure',label:'Q5 / 10 — Handling high-pressure situations'},{key:'q6_rule_breaker',label:'Q6 / 10 — Fellow officer breaking rules'},{key:'q7_benefits',label:'Q7 / 10 — Benefits of having you'},{key:'q8_force_matrix_4',label:'Q8 / 10 — Force Matrix Level 4'},{key:'q9_force_matrix_5',label:'Q9 / 10 — Force Matrix Level 5'},{key:'q10_success',label:'Q10 / 10 — Definition of success'}];
     qaHtml+=policeQMap.map(({key,label})=>`<div class="qa-item"><div class="qa-question">${escHtml(label)}</div><div class="qa-answer ${answers[key]?'':'empty'}">${answers[key]?escHtml(answers[key]):'No answer provided'}</div></div>`).join('');
+  } else if(type==='reinstatement'){
+    const bg=answers.background||{};
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Previous Badge Number</div><div class="qa-answer">${escHtml(personal.badge||'—')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Phone Number (IC)</div><div class="qa-answer">${escHtml(personal.phone||'—')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Rank Held Before Leaving</div><div class="qa-answer">${escHtml(personal.prev_rank||'—')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Date of Departure</div><div class="qa-answer">${escHtml(personal.leave_date||'—')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Reason for Leaving</div><div class="qa-answer">${escHtml(personal.leave_reason||'No answer provided')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Length of Service</div><div class="qa-answer">${escHtml(bg.service_length||'No answer provided')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Division(s) Assigned</div><div class="qa-answer">${escHtml(bg.divisions||'No answer provided')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Departure Status</div><div class="qa-answer">${escHtml(bg.departure_status||'—')}</div></div>`;
+    qaHtml+=`<div class="qa-item"><div class="qa-question">Disciplinary Actions</div><div class="qa-answer">${escHtml(bg.disciplinary||'No answer provided')}</div></div>`;
+    const reinstateQMap=[
+      {key:'rq1_why_rejoin',label:'Why Rejoin LSPD?'},
+      {key:'rq2_qualified',label:'Why Are You Qualified?'},
+      {key:'rq3_learned',label:'What Have You Learned Since Leaving?'},
+      {key:'rq4_contributions',label:'Contributions Upon Return'},
+      {key:'rq5_why_not_recruitment',label:'Why Reinstatement Over Recruitment?'},
+      {key:'rq6_follow_policies',label:'Willing to Follow All Policies?'},
+      {key:'rq7_lower_rank',label:'Prepared to Start at a Lower Rank?'},
+      {key:'rq8_criminal_activity',label:'Involvement in Criminal Activity Since Leaving?'},
+      {key:'rq9_previous_reinstatement',label:'Previous Reinstatement Application?'},
+    ];
+    qaHtml+=reinstateQMap.map(({key,label})=>`<div class="qa-item"><div class="qa-question">${escHtml(label)}</div><div class="qa-answer ${answers[key]?'':'empty'}">${answers[key]?escHtml(answers[key]):'No answer provided'}</div></div>`).join('');
   } else {
     const weaponQMap=[{key:'q2_motivation',label:'Q2 / 7 — Why obtain a gun license?'},{key:'q3_permitted',label:'Q3 / 7 — Permitted firearms (5+)'},{key:'q4_prohibited',label:'Q4 / 7 — Prohibited firearms (5+)'},{key:'q5_safety_rule',label:'Q5 / 7 — Primary safety rule'},{key:'q6_self_defense',label:'Q6 / 7 — Justifiable self-defense scenario'},{key:'q7_storage',label:'Q7 / 7 — Storage & maintenance steps'}];
     qaHtml+=weaponQMap.map(({key,label})=>`<div class="qa-item"><div class="qa-question">${escHtml(label)}</div><div class="qa-answer ${answers[key]?'':'empty'}">${answers[key]?escHtml(answers[key]):'No answer provided'}</div></div>`).join('');
   }
   const actionBtns=a.status==='pending' && canReviewApps() ?`<button class="btn btn-success btn-sm" onclick="event.stopPropagation();handleAppDecision(${a.id},'approved','${escHtml(a.submitted_by)}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Approve</button><button class="btn btn-danger btn-sm" onclick="event.stopPropagation();handleAppDecision(${a.id},'rejected','${escHtml(a.submitted_by)}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Reject</button>`:a.status==='pending'?'<span style="font-size:11px;color:var(--gray-400);font-style:italic;padding:4px 8px;">View Only</span>':'';
   const adminNoteHtml=a.admin_note?`<div style="margin-top:12px;background:rgba(201,162,39,0.06);border:1px solid rgba(201,162,39,0.15);border-radius:6px;padding:10px 14px;font-size:12px;color:var(--gray-200);"><strong style="color:var(--gold-400);">Admin Note:</strong> ${escHtml(a.admin_note)}</div>`:'';
-  return `<div class="app-card"><div class="app-card-header" onclick="toggleAppCard(${a.id})"><div class="app-card-meta"><h4>${escHtml(personal.name||a.applicant_name||'—')}&nbsp;${statusBadge}</h4><p>Submitted by: <strong style="color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</strong>${personal.age?`&nbsp;|&nbsp;Age: ${escHtml(personal.age)}`:''}${personal.gender?`&nbsp;|&nbsp;Gender: ${escHtml(personal.gender)}`:''}${personal.years_of_residency?`&nbsp;|&nbsp;Residency: ${escHtml(personal.years_of_residency)}`:''}</p><div class="mono">Submitted: ${formatDate(a.created_at)}&nbsp;|&nbsp;Ref: #${a.id}</div></div><div class="app-card-actions">${actionBtns}<button class="btn btn-secondary btn-sm btn-icon" title="Toggle Details"><svg id="chevron-${a.id}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button></div></div><div class="app-card-body" id="${appId}"><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;background:var(--navy-500);border-radius:8px;padding:14px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Full Name</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.name||'—')}</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Username</div><div style="font-size:14px;color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</div></div>${personal.age?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Age</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.age)}</div></div>`:''}${personal.gender?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Gender</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.gender)}</div></div>`:''}${personal.years_of_residency?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Years of Residency</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.years_of_residency)}</div></div>`:''}</div>${qaHtml}${adminNoteHtml}</div></div>`;
+  return `<div class="app-card"><div class="app-card-header" onclick="toggleAppCard(${a.id})"><div class="app-card-meta"><h4>${escHtml(displayName)}&nbsp;${statusBadge}</h4><p>Submitted by: <strong style="color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</strong>${personal.age?`&nbsp;|&nbsp;Age: ${escHtml(personal.age)}`:''}${personal.gender?`&nbsp;|&nbsp;Gender: ${escHtml(personal.gender)}`:''}${personal.years_of_residency?`&nbsp;|&nbsp;Residency: ${escHtml(personal.years_of_residency)}`:''}</p><div class="mono">Submitted: ${formatDate(a.created_at)}&nbsp;|&nbsp;Ref: #${a.id}</div></div><div class="app-card-actions">${actionBtns}<button class="btn btn-secondary btn-sm btn-icon" title="Toggle Details"><svg id="chevron-${a.id}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button></div></div><div class="app-card-body" id="${appId}"><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;background:var(--navy-500);border-radius:8px;padding:14px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Full Name</div><div style="font-size:14px;color:var(--white);">${escHtml(displayName)}</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Username</div><div style="font-size:14px;color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</div></div>${personal.age?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Age</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.age)}</div></div>`:''}${personal.gender?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Gender</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.gender)}</div></div>`:''}${personal.years_of_residency?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Years of Residency</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.years_of_residency)}</div></div>`:''}</div>${qaHtml}${adminNoteHtml}</div></div>`;
 }
 function toggleAppCard(id){const body=document.getElementById('app-body-'+id);const chevron=document.getElementById('chevron-'+id);const isOpen=body.classList.toggle('open');if(chevron)chevron.style.transform=isOpen?'rotate(180deg)':'';}
 
@@ -2630,29 +2993,30 @@ function _lbKeyHandler(e) { if (e.key === 'Escape') closePhotoLightbox(); }
           <label>Rank / Title</label>
           <select id="er-rank" class="form-control">
             <option value="">— No Rank / Civilian —</option>
-            <optgroup label="General Officers">
-              <option>General</option>
-              <option>Lieutenant General</option>
-              <option>Major General</option>
-              <option>Brigadier General</option>
+            <optgroup label="Command Staff">
+              <option>Chief of Police</option>
+              <option>Deputy Chief of Police</option>
+              <option>Assistant Chief</option>
+              <option>Commander</option>
+              <option>Assistant Commander</option>
             </optgroup>
-            <optgroup label="Field Officers">
-              <option>Colonel</option>
-              <option>Lieutenant Colonel</option>
-              <option>Major</option>
+            <optgroup label="Supervisors">
               <option>Captain</option>
               <option>Lieutenant</option>
+              <option>Sergeant II</option>
+              <option>Sergeant I</option>
             </optgroup>
-            <optgroup label="Non-Commissioned Officers">
-              <option>Chief Master Sergeant</option>
-              <option>Master Sergeant</option>
-              <option>Staff Sergeant</option>
-              <option>Corporal</option>
+            <optgroup label="Detectives">
+              <option>Detective III</option>
+              <option>Detective II</option>
+              <option>Detective I</option>
             </optgroup>
-            <optgroup label="Enlisted / Entry">
-              <option>Police Officer</option>
-              <option>Cadet</option>
-              <option>Civilian</option>
+            <optgroup label="Officers / Entry">
+              <option>Officer III+1</option>
+              <option>Officer III</option>
+              <option>Officer II</option>
+              <option>Officer I</option>
+              <option>Rookie</option>
             </optgroup>
           </select>
         </div>
@@ -2679,5 +3043,141 @@ function _lbKeyHandler(e) { if (e.key === 'Escape') closePhotoLightbox(); }
   </div>
 </div>
 
+<script>
+(function() {
+  const canvas = document.getElementById('bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles, drops, animId, frame = 0;
+
+  const GOLD = 'rgba(201,162,39,';
+  const BLUE = 'rgba(41,128,185,';
+  const P_COUNT = 55;
+  const D_COUNT = 28;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function rand(a, b) { return a + Math.random() * (b - a); }
+
+  /* ── PARTICLES ── */
+  function makeParticle() {
+    return {
+      x: rand(0, W), y: rand(0, H),
+      vx: rand(-0.18, 0.18), vy: rand(-0.18, 0.18),
+      r: rand(1, 2.6),
+      alpha: rand(0.08, 0.38),
+      color: Math.random() > 0.55 ? GOLD : BLUE,
+      pulse: rand(0, Math.PI * 2),
+      pulseSpeed: rand(0.008, 0.022)
+    };
+  }
+
+  /* ── RAIN DROPS ── */
+  function makeDrop() {
+    return {
+      x: rand(0, W),
+      y: rand(-H, 0),
+      len: rand(40, 130),
+      speed: rand(0.6, 2.2),
+      alpha: rand(0.03, 0.12),
+      gold: Math.random() > 0.7   // 30% gold, 70% blue-white
+    };
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({ length: P_COUNT }, makeParticle);
+    drops     = Array.from({ length: D_COUNT }, makeDrop);
+  }
+
+  function drawFrame() {
+    frame++;
+    ctx.clearRect(0, 0, W, H);
+
+    /* ── RAIN ── */
+    drops.forEach(d => {
+      const grad = ctx.createLinearGradient(d.x, d.y, d.x, d.y + d.len);
+      const c = d.gold ? `rgba(201,162,39,` : `rgba(93,173,226,`;
+      grad.addColorStop(0, c + '0)');
+      grad.addColorStop(0.5, c + d.alpha + ')');
+      grad.addColorStop(1, c + '0)');
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x, d.y + d.len);
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = d.gold ? 1.2 : 0.8;
+      ctx.stroke();
+
+      // tiny bright head
+      ctx.beginPath();
+      ctx.arc(d.x, d.y + d.len * 0.5, d.gold ? 1.2 : 0.8, 0, Math.PI * 2);
+      ctx.fillStyle = c + (d.alpha * 2.5) + ')';
+      ctx.fill();
+
+      d.y += d.speed;
+      if (d.y > H + 20) { d.y = rand(-200, -40); d.x = rand(0, W); }
+    });
+
+    /* ── PARTICLE CONNECTIONS ── */
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          const op = (1 - dist / 130) * 0.09;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = GOLD + op + ')';
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    /* ── PARTICLES ── */
+    particles.forEach(p => {
+      p.pulse += p.pulseSpeed;
+      const a = p.alpha * (0.6 + 0.4 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + a + ')';
+      ctx.fill();
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -10) p.x = W + 10;
+      if (p.x > W + 10) p.x = -10;
+      if (p.y < -10) p.y = H + 10;
+      if (p.y > H + 10) p.y = -10;
+    });
+
+    /* ── HORIZONTAL SWEEP LINE (every ~280 frames) ── */
+    const sweepPhase = (frame % 280) / 280;
+    if (sweepPhase < 0.12) {
+      const yPos = sweepPhase / 0.12 * H;
+      const sweepAlpha = Math.sin(sweepPhase / 0.12 * Math.PI) * 0.06;
+      const sweepGrad = ctx.createLinearGradient(0, yPos, W, yPos);
+      sweepGrad.addColorStop(0,   'rgba(201,162,39,0)');
+      sweepGrad.addColorStop(0.3, 'rgba(201,162,39,' + sweepAlpha + ')');
+      sweepGrad.addColorStop(0.7, 'rgba(201,162,39,' + sweepAlpha + ')');
+      sweepGrad.addColorStop(1,   'rgba(201,162,39,0)');
+      ctx.beginPath();
+      ctx.moveTo(0, yPos); ctx.lineTo(W, yPos);
+      ctx.strokeStyle = sweepGrad;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    animId = requestAnimationFrame(drawFrame);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  drawFrame();
+})();
+</script>
 </body>
 </html>
