@@ -415,6 +415,31 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .announcement-card h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--gold-300); margin-bottom: 8px; }
 .announcement-card p { font-size: 13.5px; color: var(--gray-200); line-height: 1.6; }
 .announcement-meta { font-size: 11px; color: var(--gray-400); margin-top: 10px; font-family: var(--font-mono); display: flex; gap: 12px; }
+
+/* ── ROSTER ── */
+.roster-rank-card .card-header { padding: 13px 18px; }
+.roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.roster-officer-card { background: var(--navy-600); border: var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+.roster-officer-card:hover { border-color: rgba(201,162,39,0.35); transform: translateY(-2px); }
+.roster-photo { position: relative; height: 170px; background: var(--navy-500); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.roster-photo img { width: 100%; height: 100%; object-fit: cover; }
+.roster-photo-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; }
+.roster-photo-placeholder svg { width: 52px; height: 52px; color: var(--gray-400); opacity: 0.4; }
+.roster-photo-placeholder span { font-size: 9px; letter-spacing: 0.6px; text-transform: uppercase; color: var(--gray-400); opacity: 0.6; }
+.roster-officer-body { padding: 14px; }
+.roster-officer-body h4 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 0.3px; }
+.roster-officer-rank { font-size: 11px; color: var(--gold-400); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; font-weight: 600; }
+.roster-officer-meta { margin-top: 10px; display: flex; flex-direction: column; gap: 5px; }
+.roster-officer-meta div { display: flex; justify-content: space-between; gap: 10px; font-size: 11.5px; color: var(--gray-300); }
+.roster-officer-meta strong { color: var(--gray-100); font-family: var(--font-mono); font-weight: 500; text-align: right; }
+.roster-officer-actions { margin-top: 12px; display: flex; gap: 6px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.05); }
+.uniform-rank-row { display: flex; align-items: center; gap: 12px; background: var(--navy-600); border: var(--border); border-radius: var(--radius); padding: 10px 12px; }
+.uniform-rank-thumb { width: 48px; height: 48px; border-radius: 8px; overflow: hidden; background: var(--navy-500); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.uniform-rank-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.uniform-rank-thumb svg { width: 22px; height: 22px; color: var(--gray-400); opacity: 0.45; }
+.uniform-rank-info { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.uniform-rank-name { font-size: 13px; font-weight: 600; color: var(--white); }
+.uniform-rank-actions { display: flex; align-items: center; gap: 6px; }
 .profile-header { display: flex; align-items: center; gap: 20px; padding: 24px; background: var(--navy-700); border: var(--border); border-radius: var(--radius-lg); margin-bottom: 20px; }
 .profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--navy-500), var(--gold-500)); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--white); flex-shrink: 0; border: 2px solid var(--gold-500); }
 .profile-details h2 { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--white); }
@@ -688,7 +713,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
     <div class="register-divider" style="margin-top:20px;"><span>Police Credentials (Optional)</span></div>
     <div class="reg-form-grid">
       <div class="form-group"><label>Badge Number</label><input type="text" id="r-badge" class="form-control" placeholder="e.g. LSPD-00123" oninput="onCredentialsChange()"></div>
-      <div class="form-group"><label>Rank / Title</label><select id="r-rank" class="form-control" onchange="onCredentialsChange()"><option value="">Select rank...</option><option>Chief of Police</option><option>Deputy Chief of Police</option><option>Assistant Chief</option><option>Commander</option><option>Assistant Commander</option><option>Captain</option><option>Lieutenant</option><option>Sergeant II</option><option>Sergeant I</option><option>Detective III</option><option>Detective II</option><option>Detective I</option><option>Officer III+1</option><option>Officer III</option><option>Officer II</option><option>Officer I</option><option>Rookie</option></select></div>
+      <div class="form-group"><label>Rank / Title</label><select id="r-rank" class="form-control" onchange="onCredentialsChange()"><option value="">Select rank...</option><option>Chief of Police</option><option>Deputy Chief of Police</option><option>Assistant Chief</option><option>Commander</option><option>Assistant Commander</option><option>Captain</option><option>Lieutenant</option><option>Sergeant II</option><option>Sergeant I</option><option>Detective III</option><option>Detective II</option><option>Detective I</option><option>Officer III</option><option>Officer II</option><option>Officer I</option><option>Rookie</option></select></div>
       <div class="form-group full"><label>Station / Unit Assignment</label><input type="text" id="r-station" class="form-control" placeholder="e.g. Quezon City Police District" oninput="onCredentialsChange()"></div>
     </div>
     <div id="rank-verify-notice" class="rank-verify-notice">
@@ -753,6 +778,11 @@ textarea.form-control { resize: vertical; min-height: 80px; }
       <div class="nav-item" data-page="announcements" onclick="navigateTo('announcements')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3z"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         Announcements
+      </div>
+      <!-- ROSTER NAV ITEM — visible to all roles -->
+      <div class="nav-item" data-page="roster" onclick="navigateTo('roster')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16c.5-2 2-3 3-3s2.5 1 3 3"/><line x1="14" y1="8" x2="19" y2="8"/><line x1="14" y1="12" x2="19" y2="12"/></svg>
+        Roster
       </div>
       <!-- APPLICATIONS NAV ITEM — visible to all roles -->
       <div class="nav-item" data-page="applications" onclick="navigateTo('applications')">
@@ -849,6 +879,29 @@ textarea.form-control { resize: vertical; min-height: 80px; }
         <div class="page-header"><div><h2>Announcements</h2><p>Department bulletins and notices</p></div><div class="card-actions police-only"><button class="btn btn-primary btn-sm" onclick="openModal('modal-create-announcement')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Post Announcement</button></div></div>
         <div id="announcements-list"></div>
       </div>
+
+      <!-- ═══════════ ROSTER ═══════════ -->
+      <div id="page-roster" class="page">
+        <div class="page-header">
+          <div><h2>Department Roster</h2><p>Official personnel listing, grouped by rank</p></div>
+          <div class="card-actions police-only">
+            <button class="btn btn-secondary btn-sm" onclick="openRankUniformsModal()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+              Manage Uniforms
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="openAddOfficerModal()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Officer
+            </button>
+          </div>
+        </div>
+        <div class="search-bar" style="max-width:340px;margin-bottom:18px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="roster-search" placeholder="Search name, badge, division..." oninput="renderRoster(this.value);" style="">
+        </div>
+        <div id="roster-container"></div>
+      </div>
+
 
       <!-- ═══════════ PROFILE ═══════════ -->
       <div id="page-profile" class="page">
@@ -1119,6 +1172,105 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 <div id="modal-create-criminal" class="modal-overlay"><div class="modal"><div class="modal-header"><div class="modal-title">Add Criminal Record</div><button class="modal-close" onclick="closeModal('modal-create-criminal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><div class="form-grid"><div class="form-group"><label>Full Name *</label><input type="text" id="cr-name" class="form-control" placeholder="Full name"></div><div class="form-group"><label>Character ID *</label><input type="text" id="cr-charid" class="form-control" placeholder="Unique character ID"></div><div class="form-group full"><label>Mugshot Photo</label><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;"><label for="cr-mugshot-file" class="btn btn-secondary btn-sm" style="cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin:0;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>Choose Photo</label><input type="file" id="cr-mugshot-file" accept="image/*" style="display:none;" onchange="handleMugshotUpload('cr-mugshot','cr-mugshot-filename','cr-mugshot-preview',this)"><span id="cr-mugshot-filename" style="font-size:11px;color:var(--gray-400);">No file chosen</span></div><input type="hidden" id="cr-mugshot"><div id="cr-mugshot-preview" style="margin-top:8px;"></div></div><div class="form-group full"><label>Criminal History</label><textarea id="cr-history" class="form-control" placeholder="Previous criminal background..."></textarea></div><div class="form-group full"><label>Previous Arrests</label><textarea id="cr-arrests" class="form-control" placeholder="List of prior arrests..."></textarea></div><div class="form-group full"><label>Active Warrants</label><textarea id="cr-warrants" class="form-control" placeholder="Current active warrants..."></textarea></div><div class="form-group full"><label>Notes</label><textarea id="cr-notes" class="form-control" placeholder="Additional notes..."></textarea></div></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-create-criminal')">Cancel</button><button class="btn btn-primary" onclick="createCriminal()">Add Record</button></div></div></div>
 <div id="modal-create-vehicle" class="modal-overlay"><div class="modal"><div class="modal-header"><div class="modal-title">Register Vehicle</div><button class="modal-close" onclick="closeModal('modal-create-vehicle')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><div class="form-grid"><div class="form-group"><label>Plate Number *</label><input type="text" id="v-plate" class="form-control" placeholder="e.g. ABC 1234"></div><div class="form-group"><label>Vehicle Model *</label><input type="text" id="v-model" class="form-control" placeholder="Make and model"></div><div class="form-group"><label>Owner *</label><input type="text" id="v-owner" class="form-control" placeholder="Owner name"></div><div class="form-group"><label>Owner Char ID</label><input type="text" id="v-ownerid" class="form-control" placeholder="Character ID"></div><div class="form-group"><label>Registration Status</label><select id="v-regstatus" class="form-control"><option>Registered</option><option>Unregistered</option><option>Expired</option><option>Stolen</option></select></div><div class="form-group"><label>Impound Status</label><select id="v-impound" class="form-control"><option>None</option><option>Impounded</option></select></div><div class="form-group full"><label>Notes</label><textarea id="v-notes" class="form-control" placeholder="Additional notes..."></textarea></div></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-create-vehicle')">Cancel</button><button class="btn btn-primary" onclick="createVehicle()">Register</button></div></div></div>
 <div id="modal-create-announcement" class="modal-overlay"><div class="modal"><div class="modal-header"><div class="modal-title">Post Announcement</div><button class="modal-close" onclick="closeModal('modal-create-announcement')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><div class="form-group"><label>Title *</label><input type="text" id="an-title" class="form-control" placeholder="Announcement title"></div><div class="form-group"><label>Content *</label><textarea id="an-content" class="form-control" style="min-height:120px;" placeholder="Announcement content..."></textarea></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-create-announcement')">Cancel</button><button class="btn btn-primary" onclick="createAnnouncement()">Post</button></div></div></div>
+
+<!-- ROSTER: ADD / EDIT OFFICER MODAL -->
+<div id="modal-roster-officer" class="modal-overlay">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="roster-modal-title">Add Officer</div>
+      <button class="modal-close" onclick="closeModal('modal-roster-officer')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ro-id">
+      <div class="form-grid">
+        <div class="form-group full">
+          <label>Full Name *</label>
+          <input type="text" id="ro-name" class="form-control" placeholder="e.g. Juan Dela Cruz">
+        </div>
+        <div class="form-group">
+          <label>Rank *</label>
+          <select id="ro-rank" class="form-control" onchange="updateOfficerUniformPreview()">
+            <option value="">— Select Rank —</option>
+            <optgroup label="Command Staff">
+              <option>Chief of Police</option>
+              <option>Deputy Chief of Police</option>
+              <option>Assistant Chief</option>
+              <option>Commander</option>
+              <option>Assistant Commander</option>
+            </optgroup>
+            <optgroup label="Supervisors">
+              <option>Captain</option>
+              <option>Lieutenant</option>
+              <option>Sergeant II</option>
+              <option>Sergeant I</option>
+            </optgroup>
+            <optgroup label="Detectives">
+              <option>Detective III</option>
+              <option>Detective II</option>
+              <option>Detective I</option>
+            </optgroup>
+            <optgroup label="Officers / Entry">
+              <option>Officer III</option>
+              <option>Officer II</option>
+              <option>Officer I</option>
+              <option>Rookie</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Badge Number</label>
+          <input type="text" id="ro-badge" class="form-control" placeholder="e.g. LSPD-00123">
+        </div>
+        <div class="form-group full">
+          <label>Division</label>
+          <input type="text" id="ro-division" class="form-control" placeholder="e.g. Patrol Division, Detective Bureau">
+        </div>
+        <div class="form-group full">
+          <label>Uniform Photo</label>
+          <div id="ro-uniform-preview" style="display:flex;align-items:center;gap:12px;background:var(--navy-600);border:var(--border);border-radius:var(--radius);padding:10px 14px;">
+            <div id="ro-uniform-thumb" style="width:56px;height:56px;border-radius:8px;overflow:hidden;background:var(--navy-500);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;height:24px;color:var(--gray-400);opacity:0.45;"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+            </div>
+            <div style="font-size:12px;color:var(--gray-300);line-height:1.6;">
+              <span id="ro-uniform-text">Select a rank above to preview its uniform photo.</span><br>
+              <button type="button" class="btn-link" style="font-size:11px;" onclick="closeModal('modal-roster-officer');openRankUniformsModal();">Manage uniforms by rank →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modal-roster-officer')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveRosterOfficer()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Save Officer
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ROSTER: MANAGE RANK UNIFORMS MODAL -->
+<div id="modal-rank-uniforms" class="modal-overlay">
+  <div class="modal" style="max-width:560px;">
+    <div class="modal-header">
+      <div class="modal-title">Manage Rank Uniforms</div>
+      <button class="modal-close" onclick="closeModal('modal-rank-uniforms')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:12px;color:var(--gray-300);margin-bottom:16px;line-height:1.6;">
+        Upload one uniform photo per rank. Every officer with that rank automatically shows this photo on the roster — no need to upload a photo for each officer individually.
+      </p>
+      <div id="uniform-rank-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modal-rank-uniforms')">Close</button>
+    </div>
+  </div>
+</div>
 <div id="modal-create-user" class="modal-overlay"><div class="modal"><div class="modal-header"><div class="modal-title">Create User Account</div><button class="modal-close" onclick="closeModal('modal-create-user')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><div class="form-grid"><div class="form-group"><label>Username *</label><input type="text" id="u-username" class="form-control" placeholder="Unique username"></div><div class="form-group"><label>Password *</label><input type="password" id="u-password" class="form-control" placeholder="Secure password"></div><div class="form-group"><label>Full Name</label><input type="text" id="u-fullname" class="form-control" placeholder="Display name"></div><div class="form-group"><label>Badge Number</label><input type="text" id="u-badge" class="form-control" placeholder="e.g. LSPD-001"></div><div class="form-group full"><label>Role *</label><select id="u-role" class="form-control"><option value="">Select role...</option><option value="police">Police</option><option value="citizen">Citizen</option><option value="superadmin">Superadmin</option></select></div></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-create-user')">Cancel</button><button class="btn btn-primary" onclick="createUser()">Create Account</button></div></div></div>
 <div id="modal-change-role" class="modal-overlay"><div class="modal" style="max-width:360px;"><div class="modal-header"><div class="modal-title">Change User Role</div><button class="modal-close" onclick="closeModal('modal-change-role')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><input type="hidden" id="cr-user-id"><p style="color:var(--gray-300);margin-bottom:16px;font-size:13px;">Changing role for: <strong id="cr-user-name" style="color:var(--gold-400);"></strong></p><div class="form-group"><label>New Role</label><select id="cr-new-role" class="form-control"><option value="citizen">Citizen</option><option value="police">Police</option><option value="superadmin">Superadmin</option></select></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-change-role')">Cancel</button><button class="btn btn-primary" onclick="changeUserRole()">Apply</button></div></div></div>
 <div id="modal-reset-pw" class="modal-overlay"><div class="modal" style="max-width:360px;"><div class="modal-header"><div class="modal-title">Reset Password</div><button class="modal-close" onclick="closeModal('modal-reset-pw')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><input type="hidden" id="rp-user-id"><p style="color:var(--gray-300);margin-bottom:16px;font-size:13px;">Resetting password for: <strong id="rp-user-name" style="color:var(--gold-400);"></strong></p><div class="form-group"><label>New Password *</label><input type="password" id="rp-password" class="form-control" placeholder="New password"></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-reset-pw')">Cancel</button><button class="btn btn-danger" onclick="adminResetPassword()">Reset Password</button></div></div></div>
@@ -1138,7 +1290,7 @@ let authToken   = null;
 let currentPage = 'dashboard';
 let searchTimers = {};
 
-const POLICE_RANKS = ['Chief of Police','Deputy Chief of Police','Assistant Chief','Commander','Assistant Commander','Captain','Lieutenant','Sergeant II','Sergeant I','Detective III','Detective II','Detective I','Officer III+1','Officer III','Officer II','Officer I','Rookie'];
+const POLICE_RANKS = ['Chief of Police','Deputy Chief of Police','Assistant Chief','Commander','Assistant Commander','Captain','Lieutenant','Sergeant II','Sergeant I','Detective III','Detective II','Detective I','Officer III','Officer II','Officer I','Rookie'];
 
 // ════════════════════════════════════════════════════════════════
 // APPLICATION QUESTIONS
@@ -1446,7 +1598,7 @@ function navigateTo(page) {
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   const pageEl=document.getElementById('page-'+page); if(pageEl)pageEl.classList.add('active');
   const navEl=document.querySelector('[data-page="'+page+'"]'); if(navEl)navEl.classList.add('active');
-  const titles={dashboard:'Operations Dashboard',wanted:'Wanted Notices',arrests:'Arrest Records',cases:'Case Files',evidence:'Evidence',criminals:'Criminal Database',vehicles:'Vehicle Database',announcements:'Announcements',profile:'My Profile',admin:'Admin Panel',applications:'Applications'};
+  const titles={dashboard:'Operations Dashboard',wanted:'Wanted Notices',arrests:'Arrest Records',cases:'Case Files',evidence:'Evidence',criminals:'Criminal Database',vehicles:'Vehicle Database',announcements:'Announcements',roster:'Department Roster',profile:'My Profile',admin:'Admin Panel',applications:'Applications'};
   document.getElementById('topbar-title').textContent=titles[page]||page;
   loadPageData(page);
 }
@@ -1470,6 +1622,7 @@ function loadPageData(page, silent=false) {
     case 'criminals':     loadCriminals();     break;
     case 'vehicles':      loadVehicles();      break;
     case 'announcements': loadAnnouncements(); break;
+    case 'roster':        loadRoster();        break;
     case 'profile':       loadProfile();       break;
     case 'admin':         loadAdmin();         break;
     case 'applications':  loadApplicationsPage(); break;
@@ -1678,6 +1831,256 @@ async function loadAnnouncements(){const data=await api('GET','/announcements',n
 async function createAnnouncement(){const body={title:document.getElementById('an-title').value.trim(),content:document.getElementById('an-content').value.trim()};if(!body.title||!body.content){toast('Title and content required','warning');return;}const res=await api('POST','/announcements/create',body);if(res.error){toast(res.error,'error');return;}toast('Announcement posted','success');closeModal('modal-create-announcement');document.getElementById('an-title').value='';document.getElementById('an-content').value='';loadAnnouncements();}
 
 // ════════════════════════════════════════════════════════════════
+// ROSTER — DB-backed (Supabase via Worker)
+// Officers and rank uniforms are stored server-side so they are
+// shared across all browsers/devices. Police & Superadmin can
+// manage; all logged-in users can view.
+// ════════════════════════════════════════════════════════════════
+let editingOfficerId = null;
+let _cachedUniforms = null; // in-memory cache so we don't re-fetch on every card render
+
+function isPoliceOrAdminUser() {
+  return !!(currentUser && ['police','superadmin'].includes(currentUser.role));
+}
+
+async function getRankUniformsFromDB() {
+  if (_cachedUniforms) return _cachedUniforms;
+  try {
+    const data = await api('GET', '/roster/uniforms');
+    _cachedUniforms = (data && typeof data.uniforms === 'object') ? data.uniforms : {};
+  } catch { _cachedUniforms = {}; }
+  return _cachedUniforms;
+}
+
+function getUniformForRank(rank) {
+  return (_cachedUniforms || {})[rank] || '';
+}
+
+async function loadRoster() {
+  // Pre-fetch uniforms so cards render correctly on first pass
+  await getRankUniformsFromDB();
+  const search = document.getElementById('roster-search');
+  await renderRoster(search ? search.value : '');
+}
+
+function officerCardHtml(o) {
+  const photo = getUniformForRank(o.rank) || '';
+  const photoInner = photo
+    ? `<img src="${escHtml(photo)}" alt="${escHtml(o.name)}">`
+    : `<div class="roster-photo-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>No Uniform Set</span></div>`;
+  return `<div class="roster-officer-card">
+    <div class="roster-photo">${photoInner}</div>
+    <div class="roster-officer-body">
+      <h4>${escHtml(o.name)}</h4>
+      <div class="roster-officer-rank">${escHtml(o.rank)}</div>
+      <div class="roster-officer-meta">
+        <div><span>Division</span><strong>${escHtml(o.division||'—')}</strong></div>
+        <div><span>Badge #</span><strong>${escHtml(o.badge||'—')}</strong></div>
+      </div>
+      <div class="roster-officer-actions police-only">
+        <button class="btn btn-secondary btn-sm btn-icon" title="Edit Officer" onclick="openEditOfficerModal(${o.id})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+        <button class="btn btn-danger btn-sm btn-icon" title="Remove Officer" onclick="confirmDeleteOfficer(${o.id},'${escHtml(o.name).replace(/'/g,"&#39;")}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>
+      </div>
+    </div>
+  </div>`;
+}
+
+async function renderRoster(search='') {
+  const container = document.getElementById('roster-container');
+  if (!container) return;
+
+  const url = search ? '/roster?search=' + encodeURIComponent(search) : '/roster';
+  const data = await api('GET', url);
+  if (data.error) { toast(data.error, 'error'); return; }
+
+  let list = data.officers || [];
+  if (!list.length) {
+    container.innerHTML = `<div class="card"><div class="card-body"><div class="no-data">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2"/><path d="M5.5 16c.5-2 2-3 3-3s2.5 1 3 3"/><line x1="14" y1="8" x2="19" y2="8"/><line x1="14" y1="12" x2="19" y2="12"/></svg>
+      <p>${search ? 'No officers match your search' : 'No officers listed yet'}</p>
+      <span class="police-only" style="display:none;">Set rank uniforms first, then click "Add Officer" above</span>
+    </div></div></div>`;
+    const sp = container.querySelector('.police-only'); if (sp) sp.style.display = isPoliceOrAdminUser() ? '' : 'none';
+    return;
+  }
+
+  const groups = {};
+  POLICE_RANKS.forEach(r => groups[r] = []);
+  groups['Other'] = [];
+  list.forEach(o => { const key = POLICE_RANKS.includes(o.rank) ? o.rank : 'Other'; groups[key].push(o); });
+
+  let html = '';
+  [...POLICE_RANKS, 'Other'].forEach(rank => {
+    const officers = groups[rank];
+    if (!officers.length) return;
+    html += `<div class="card roster-rank-card">
+      <div class="card-header"><div class="card-title">${escHtml(rank)}<span class="badge badge-police" style="margin-left:8px;">${officers.length}</span></div></div>
+      <div class="card-body"><div class="roster-grid">${officers.map(officerCardHtml).join('')}</div></div>
+    </div>`;
+  });
+  container.innerHTML = html;
+  const isPA = isPoliceOrAdminUser();
+  container.querySelectorAll('.police-only').forEach(el => { el.style.display = isPA ? '' : 'none'; });
+}
+
+// ── Add / Edit Officer ──
+function openAddOfficerModal() {
+  editingOfficerId = null;
+  document.getElementById('roster-modal-title').textContent = 'Add Officer';
+  document.getElementById('ro-id').value = '';
+  document.getElementById('ro-name').value = '';
+  document.getElementById('ro-rank').value = '';
+  document.getElementById('ro-badge').value = '';
+  document.getElementById('ro-division').value = '';
+  updateOfficerUniformPreview();
+  openModal('modal-roster-officer');
+}
+
+async function openEditOfficerModal(id) {
+  // Fetch fresh data from server
+  const data = await api('GET', '/roster');
+  const o = (data.officers || []).find(x => x.id === id);
+  if (!o) { toast('Officer not found', 'error'); return; }
+  editingOfficerId = id;
+  document.getElementById('roster-modal-title').textContent = 'Edit Officer';
+  document.getElementById('ro-id').value = o.id;
+  document.getElementById('ro-name').value = o.name || '';
+  document.getElementById('ro-rank').value = o.rank || '';
+  document.getElementById('ro-badge').value = o.badge || '';
+  document.getElementById('ro-division').value = o.division || '';
+  updateOfficerUniformPreview();
+  openModal('modal-roster-officer');
+}
+
+function updateOfficerUniformPreview() {
+  const rank = document.getElementById('ro-rank').value;
+  const thumb = document.getElementById('ro-uniform-thumb');
+  const text = document.getElementById('ro-uniform-text');
+  if (!thumb || !text) return;
+  const placeholderSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;height:24px;color:var(--gray-400);opacity:0.45;"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>';
+  if (!rank) {
+    thumb.innerHTML = placeholderSvg;
+    text.textContent = 'Select a rank above to preview its uniform photo.';
+    return;
+  }
+  const photo = getUniformForRank(rank);
+  if (photo) {
+    thumb.innerHTML = `<img src="${photo}" alt="${escHtml(rank)}" style="width:100%;height:100%;object-fit:cover;">`;
+    text.textContent = 'Using the ' + rank + ' uniform photo.';
+  } else {
+    thumb.innerHTML = placeholderSvg;
+    text.innerHTML = 'No uniform photo set yet for <strong>' + escHtml(rank) + '</strong>.';
+  }
+}
+
+async function saveRosterOfficer() {
+  const name = document.getElementById('ro-name').value.trim();
+  const rank = document.getElementById('ro-rank').value;
+  const badge = document.getElementById('ro-badge').value.trim();
+  const division = document.getElementById('ro-division').value.trim();
+  if (!name || !rank) { toast('Name and Rank are required', 'warning'); return; }
+
+  const rankOrder = POLICE_RANKS.indexOf(rank);
+  const body = { name, rank, badge, division, rank_order: rankOrder >= 0 ? rankOrder : 99 };
+
+  let res;
+  if (editingOfficerId) {
+    res = await api('PUT', '/roster/update', { id: editingOfficerId, ...body });
+  } else {
+    res = await api('POST', '/roster/create', body);
+  }
+
+  if (res.error) { toast(res.error, 'error'); return; }
+  toast(editingOfficerId ? 'Officer updated' : 'Officer added to roster', 'success');
+  closeModal('modal-roster-officer');
+  await loadRoster();
+}
+
+function confirmDeleteOfficer(id, name) {
+  document.getElementById('confirm-title').textContent = 'Remove Officer';
+  document.getElementById('confirm-message').textContent = 'Remove "' + name + '" from the public roster? This cannot be undone.';
+  document.getElementById('confirm-btn').onclick = async () => {
+    const res = await api('POST', '/roster/delete', { id });
+    if (res.error) { toast(res.error, 'error'); return; }
+    closeModal('modal-confirm');
+    toast('Officer removed from roster', 'success');
+    await loadRoster();
+  };
+  openModal('modal-confirm');
+}
+
+// ── Manage Rank Uniforms ──
+async function openRankUniformsModal() {
+  await renderUniformManager();
+  openModal('modal-rank-uniforms');
+}
+
+async function renderUniformManager() {
+  const wrap = document.getElementById('uniform-rank-list');
+  if (!wrap) return;
+  _cachedUniforms = null; // force re-fetch
+  const uniforms = await getRankUniformsFromDB();
+  wrap.innerHTML = POLICE_RANKS.map((rank, i) => {
+    const photo = uniforms[rank] || '';
+    const urlInputId = 'uf-url-' + i;
+    const thumbInner = photo
+      ? `<img src="${escHtml(photo)}" alt="${escHtml(rank)}" onerror="this.parentElement.innerHTML='<div style=\'font-size:10px;color:var(--red-400);text-align:center;padding:4px;\'>Bad URL</div>'">`
+      : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>`;
+    return `<div class="uniform-rank-row" style="flex-direction:column;align-items:stretch;gap:8px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="uniform-rank-thumb">${thumbInner}</div>
+        <div class="uniform-rank-info" style="flex:1;">
+          <div class="uniform-rank-name">${escHtml(rank)}</div>
+          <div style="font-size:11px;color:var(--gray-400);margin-top:2px;">${photo ? 'URL set — replace below' : 'No image set'}</div>
+        </div>
+        ${photo ? `<button class="btn btn-danger btn-sm btn-icon" title="Remove uniform" data-rank="${escHtml(rank)}" onclick="removeRankUniform(this.dataset.rank)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>` : ''}
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input type="text" id="${urlInputId}" class="form-control" style="font-size:12px;padding:7px 10px;"
+          placeholder="Paste GitHub raw URL… e.g. https://raw.githubusercontent.com/…"
+          value="${escHtml(photo)}">
+        <button class="btn btn-primary btn-sm" style="white-space:nowrap;" onclick="saveRankUniformUrl('${escHtml(rank)}','${urlInputId}')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          Set
+        </button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function saveRankUniformUrl(rank, inputId) {
+  const url = (document.getElementById(inputId)?.value || '').trim();
+  if (!url) { toast('Please paste a URL first', 'warning'); return; }
+  if (!url.startsWith('http://') && !url.startsWith('https://')) {
+    toast('URL must start with http:// or https://', 'warning'); return;
+  }
+  _cachedUniforms = null;
+  const uniforms = await getRankUniformsFromDB();
+  uniforms[rank] = url;
+  const res = await api('POST', '/roster/uniforms', { uniforms });
+  if (res.error) { toast(res.error, 'error'); return; }
+  _cachedUniforms = uniforms;
+  toast('Uniform photo set for ' + rank, 'success');
+  await renderUniformManager();
+  updateOfficerUniformPreview();
+  await loadRoster();
+}
+
+async function removeRankUniform(rank) {
+  _cachedUniforms = null;
+  const uniforms = await getRankUniformsFromDB();
+  delete uniforms[rank];
+  const res = await api('POST', '/roster/uniforms', { uniforms });
+  if (res.error) { toast(res.error, 'error'); return; }
+  _cachedUniforms = uniforms;
+  toast('Uniform photo removed for ' + rank, 'success');
+  await renderUniformManager();
+  updateOfficerUniformPreview();
+  await loadRoster();
+}
+
+
+// ════════════════════════════════════════════════════════════════
 // PROFILE
 // ════════════════════════════════════════════════════════════════
 async function loadProfile(){if(!currentUser)return;const res=await api('GET','/verify');const u=res.user||currentUser;document.getElementById('profile-avatar').textContent=(u.username||'?')[0].toUpperCase();document.getElementById('profile-username').textContent=u.username;document.getElementById('profile-badge').textContent=u.badge_number?'Badge: '+u.badge_number:'No badge number assigned';document.getElementById('profile-role-badge').innerHTML='<span class="role-badge '+u.role+'">'+u.role+'</span>';document.getElementById('profile-detail-username').textContent=u.username;document.getElementById('profile-detail-fullname').textContent=u.full_name||'—';document.getElementById('profile-detail-role').textContent=u.role;document.getElementById('profile-detail-badge').textContent=u.badge_number||'—';document.getElementById('profile-detail-rank').textContent=u.rank||'—';document.getElementById('profile-detail-station').textContent=u.station||'—';document.getElementById('profile-detail-lastlogin').textContent=u.last_login?formatDate(u.last_login):'First session';document.getElementById('profile-pending-notice').style.display=u.rank_verification_status==='pending'?'block':'none';}
@@ -1769,13 +2172,16 @@ async function adminResetCooldown() {
   }
 
   // Clear localStorage override keys so the user's active session also benefits
-  const localTypes = uiType === 'both' ? ['police', 'weapon'] : [uiType];
+  const localTypes = uiType === 'both' ? ['police', 'weapon', 'reinstatement'] : [uiType];
   for (const t of localTypes) {
     localStorage.removeItem('pnp_cooldown_' + t + '_' + user_id);
     localStorage.setItem('pnp_cooldown_reset_' + t + '_' + user_id, '1');
   }
 
-  const typeLabel = uiType === 'both' ? 'Police & Weapon License' : (uiType === 'police' ? 'Police' : 'Weapon License');
+  const typeLabel = uiType === 'both' ? 'Police, Weapon License & Reinstatement'
+    : uiType === 'police' ? 'Police'
+    : uiType === 'reinstatement' ? 'Reinstatement'
+    : 'Weapon License';
   toast(username + "'s " + typeLabel + " cooldown has been reset.", 'success');
   closeModal('modal-reset-cooldown');
 }
@@ -2228,12 +2634,20 @@ function showCooldownBanner(type, remainingMs) {
       removeCooldownBanner(type);
       // Re-run showAlreadyApplied with 'rejected' but zero remaining — shows form
       const msgEl = document.getElementById(
-        type === 'police' ? 'police-app-status-msg' : 'weapon-app-status-msg'
+        type === 'police' ? 'police-app-status-msg'
+        : type === 'reinstatement' ? 'reinstatement-app-status-msg'
+        : 'weapon-app-status-msg'
       );
       if (msgEl) msgEl.textContent = (type === 'police'
         ? 'Your police application was rejected. You may reapply.'
+        : type === 'reinstatement'
+        ? 'Your reinstatement application was rejected. You may reapply.'
         : 'Your weapon license application was rejected. You may reapply.');
-      const formWrap = document.getElementById(type === 'police' ? 'police-form-wrap' : 'weapon-form-wrap');
+      const formWrap = document.getElementById(
+        type === 'police' ? 'police-form-wrap'
+        : type === 'reinstatement' ? 'reinstatement-form-wrap'
+        : 'weapon-form-wrap'
+      );
       if (formWrap) formWrap.style.display = 'block';
       return;
     }
@@ -2948,9 +3362,10 @@ function _lbKeyHandler(e) { if (e.key === 'Escape') closePhotoLightbox(); }
       <div class="form-group">
         <label>Application Type to Reset</label>
         <select id="rcd-type" class="form-control">
-          <option value="both">Both (Police &amp; Weapon License)</option>
+          <option value="both">All (Police, Weapon License &amp; Reinstatement)</option>
           <option value="police">Police Application Only</option>
           <option value="weapon">Weapon License Only</option>
+          <option value="reinstatement">Reinstatement Only</option>
         </select>
       </div>
       <div style="background:rgba(93,173,226,0.07);border:1px solid rgba(93,173,226,0.2);border-radius:var(--radius);padding:10px 14px;font-size:12px;color:var(--gray-300);margin-top:4px;line-height:1.7;">
@@ -3012,7 +3427,6 @@ function _lbKeyHandler(e) { if (e.key === 'Escape') closePhotoLightbox(); }
               <option>Detective I</option>
             </optgroup>
             <optgroup label="Officers / Entry">
-              <option>Officer III+1</option>
               <option>Officer III</option>
               <option>Officer II</option>
               <option>Officer I</option>
