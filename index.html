@@ -1225,7 +1225,15 @@ textarea.form-control { resize: vertical; min-height: 80px; }
         </div>
         <div class="form-group full">
           <label>Division</label>
-          <input type="text" id="ro-division" class="form-control" placeholder="e.g. Patrol Division, Detective Bureau">
+          <select id="ro-division" class="form-control">
+            <option value="">— No Division —</option>
+            <option>Special Weapons And Tactics (SWAT)</option>
+            <option>Gang and Narcotics Division (GND)</option>
+            <option>Internal Affairs (IA)</option>
+            <option>Training &amp; Employment Division (FTO)</option>
+            <option>Traffic Enforcement Unit (TEU)</option>
+            <option>Firearm Licensing</option>
+          </select>
         </div>
         <div class="form-group full">
           <label>Uniform Photo</label>
@@ -1977,7 +1985,7 @@ async function saveRosterOfficer() {
   const name = document.getElementById('ro-name').value.trim();
   const rank = document.getElementById('ro-rank').value;
   const badge = document.getElementById('ro-badge').value.trim();
-  const division = document.getElementById('ro-division').value.trim();
+  const division = document.getElementById('ro-division').value;
   if (!name || !rank) { toast('Name and Rank are required', 'warning'); return; }
 
   const rankOrder = POLICE_RANKS.indexOf(rank);
