@@ -332,6 +332,17 @@ tbody td:first-child { color: var(--gold-300); font-family: var(--font-mono); fo
 .no-data svg { width: 40px; height: 40px; margin: 0 auto 12px; opacity: 0.4; display: block; }
 .no-data p { font-size: 14px; margin-bottom: 4px; }
 .no-data span { font-size: 12px; opacity: 0.6; }
+
+/* ── PAGINATION ── */
+.pagination-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-top: var(--border); background: var(--navy-700); flex-wrap: wrap; gap: 10px; }
+.pagination-info { font-size: 12px; color: var(--gray-400); font-family: var(--font-mono); }
+.pagination-controls { display: flex; align-items: center; gap: 4px; }
+.page-btn { background: var(--navy-600); border: var(--border); border-radius: 6px; color: var(--gray-200); font-size: 12px; font-family: var(--font-mono); font-weight: 600; padding: 5px 10px; cursor: pointer; transition: all 0.15s; min-width: 32px; text-align: center; }
+.page-btn:hover:not(:disabled) { background: var(--navy-500); border-color: rgba(201,162,39,0.35); color: var(--gold-300); }
+.page-btn.active { background: rgba(201,162,39,0.15); border-color: var(--gold-500); color: var(--gold-400); }
+.page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.page-size-select { background: var(--navy-600); border: var(--border); border-radius: 6px; color: var(--gray-200); font-size: 12px; padding: 5px 8px; cursor: pointer; outline: none; }
+.page-size-select:focus { border-color: var(--gold-500); }
 .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; white-space: nowrap; }
 .badge-active { background: rgba(39,174,96,0.15); color: #2ECC71; border: 1px solid rgba(39,174,96,0.3); }
 .badge-captured { background: rgba(41,128,185,0.15); color: #5DADE2; border: 1px solid rgba(41,128,185,0.3); }
@@ -493,11 +504,18 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .progress-count { font-family: var(--font-display); font-size: 14px; font-weight: 700; color: var(--gold-400); }
 .progress-bar-track { height: 6px; background: var(--navy-500); border-radius: 3px; overflow: hidden; }
 .progress-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--gold-500), var(--gold-300)); transition: width 0.4s ease; }
-.app-card { background: var(--navy-600); border: var(--border); border-radius: var(--radius-lg); margin-bottom: 14px; overflow: hidden; transition: border-color 0.2s; }
+.app-card { background: var(--navy-600); border: var(--border); border-radius: var(--radius-lg); margin-bottom: 14px; overflow: hidden; transition: border-color 0.2s; position: relative; }
 .app-card:hover { border-color: rgba(201,162,39,0.25); }
+.app-card[data-apptype="police"]        { border-left: 3px solid #5DADE2; }
+.app-card[data-apptype="weapon_license"]{ border-left: 3px solid #F5B041; }
+.app-card[data-apptype="reinstatement"] { border-left: 3px solid #BB8FCE; }
 .app-card-header { padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: var(--border); cursor: pointer; }
 .app-card-meta { flex: 1; min-width: 0; }
-.app-card-meta h4 { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.app-card-meta h4 { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 4px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.app-card-type-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; }
+.app-card-type-pill.type-police         { background: rgba(93,173,226,0.18); color: #5DADE2; border: 1px solid rgba(93,173,226,0.4); }
+.app-card-type-pill.type-weapon_license { background: rgba(245,176,65,0.18); color: #F5B041; border: 1px solid rgba(245,176,65,0.4); }
+.app-card-type-pill.type-reinstatement  { background: rgba(187,143,206,0.18); color: #BB8FCE; border: 1px solid rgba(187,143,206,0.4); }
 .app-card-meta p { font-size: 12px; color: var(--gray-300); }
 .app-card-meta .mono { font-family: var(--font-mono); font-size: 11px; color: var(--gray-400); margin-top: 3px; }
 .app-card-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; flex-wrap: wrap; }
@@ -560,6 +578,15 @@ textarea.form-control { resize: vertical; min-height: 80px; }
 .submit-footer .note { font-size: 12px; color: var(--gray-400); flex: 1; line-height: 1.6; }
 .admin-note-row { margin-top: 14px; border-top: var(--border); padding-top: 14px; }
 .admin-note-row label { display: block; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-300); margin-bottom: 7px; }
+
+/* ── PAGINATION ── */
+.pagination { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-top: var(--border); background: var(--navy-700); gap: 10px; flex-wrap: wrap; }
+.pagination-info { font-size: 12px; color: var(--gray-400); font-family: var(--font-mono); }
+.pagination-controls { display: flex; align-items: center; gap: 4px; }
+.pagination-btn { background: var(--navy-600); border: var(--border); color: var(--gray-300); border-radius: 6px; padding: 5px 11px; font-size: 12px; font-family: var(--font-display); font-weight: 600; letter-spacing: 0.5px; cursor: pointer; transition: all 0.15s; }
+.pagination-btn:hover:not(:disabled) { background: var(--navy-500); border-color: rgba(201,162,39,0.35); color: var(--white); }
+.pagination-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.pagination-btn.active { background: linear-gradient(135deg, var(--gold-500), var(--gold-300)); color: var(--navy-900); border-color: transparent; }
 
 /* ── CRIMINAL MUGSHOT ── */
 .criminal-mugshot-thumb {
@@ -847,7 +874,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
       <!-- ═══════════ ARRESTS ═══════════ -->
       <div id="page-arrests" class="page">
         <div class="page-header"><div><h2>Arrest Records</h2><p>All arrest logs and reports</p></div><div class="card-actions"><button class="btn btn-primary btn-sm" onclick="openModal('modal-create-arrest')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New Arrest Report</button></div></div>
-        <div class="card"><div class="card-header"><div class="card-title">Arrest Database</div><div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="arrest-search" placeholder="Search suspect, ID..." oninput="searchArrests(this.value)"></div></div><div class="table-wrapper"><table><thead><tr><th>Arrest ID</th><th>Photo</th><th>Suspect</th><th>Char ID</th><th>Officer</th><th>Charges</th><th>Fine</th><th>Jail Time</th><th>Date</th><th>Actions</th></tr></thead><tbody id="arrests-table-body"></tbody></table></div></div>
+        <div class="card"><div class="card-header"><div class="card-title">Arrest Database</div><div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="arrest-search" placeholder="Search suspect, ID..." oninput="searchArrests(this.value)"></div></div><div class="table-wrapper"><table><thead><tr><th>Arrest ID</th><th>Photo</th><th>Suspect</th><th>Char ID</th><th>Officer</th><th>Charges</th><th>Fine</th><th>Jail Time</th><th>Date</th><th>Actions</th></tr></thead><tbody id="arrests-table-body"></tbody></table></div><div id="arrests-pagination" class="pagination" style="display:none;"></div></div>
       </div>
 
       <!-- ═══════════ CASES ═══════════ -->
@@ -865,13 +892,13 @@ textarea.form-control { resize: vertical; min-height: 80px; }
       <!-- ═══════════ CRIMINALS ═══════════ -->
       <div id="page-criminals" class="page">
         <div class="page-header"><div><h2>Criminal Database</h2><p>Records of known criminal individuals</p></div><div class="card-actions"><button class="btn btn-primary btn-sm" onclick="openModal('modal-create-criminal')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add Record</button></div></div>
-        <div class="card"><div class="card-header"><div class="card-title">Criminal Records</div><div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="criminal-search" placeholder="Search name or char ID..." oninput="searchCriminals(this.value)"></div></div><div class="table-wrapper"><table><thead><tr><th>Char ID</th><th>Mugshot</th><th>Full Name</th><th>Criminal History</th><th>Active Warrants</th><th>Notes</th><th>Added</th><th>Actions</th></tr></thead><tbody id="criminals-table-body"></tbody></table></div></div>
+        <div class="card"><div class="card-header"><div class="card-title">Criminal Records</div><div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="criminal-search" placeholder="Search name or char ID..." oninput="searchCriminals(this.value)"></div></div><div class="table-wrapper"><table><thead><tr><th>Char ID</th><th>Mugshot</th><th>Full Name</th><th>Criminal History</th><th>Active Warrants</th><th>Notes</th><th>Added</th><th>Actions</th></tr></thead><tbody id="criminals-table-body"></tbody></table></div><div id="criminals-pagination" class="pagination" style="display:none;"></div></div>
       </div>
 
       <!-- ═══════════ VEHICLES ═══════════ -->
       <div id="page-vehicles" class="page">
         <div class="page-header"><div><h2>Vehicle Database</h2><p>Registered and flagged vehicles</p></div><div class="card-actions"><button class="btn btn-primary btn-sm" onclick="openModal('modal-create-vehicle')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Register Vehicle</button></div></div>
-        <div class="card"><div class="card-header"><div class="card-title">Vehicle Registry</div><div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="vehicle-search" placeholder="Search plate, owner, model..." oninput="searchVehicles(this.value)"></div></div><div class="table-wrapper"><table><thead><tr><th>Plate</th><th>Model</th><th>Owner</th><th>Char ID</th><th>Registration</th><th>Impound</th><th>Notes</th></tr></thead><tbody id="vehicles-table-body"></tbody></table></div></div>
+        <div class="card"><div class="card-header"><div class="card-title">Vehicle Registry</div><div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input type="text" id="vehicle-search" placeholder="Search plate, owner, model..." oninput="searchVehicles(this.value)"></div></div><div class="table-wrapper"><table><thead><tr><th>Plate</th><th>Model</th><th>Owner</th><th>Char ID</th><th>Registration</th><th>Impound</th><th>Notes</th></tr></thead><tbody id="vehicles-table-body"></tbody></table></div><div id="vehicles-pagination" class="pagination" style="display:none;"></div></div>
       </div>
 
       <!-- ═══════════ ANNOUNCEMENTS ═══════════ -->
@@ -1135,6 +1162,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
             <div><h2>Application Review</h2><p>Review and manage all submitted applications</p></div>
             <button class="btn btn-secondary btn-sm" onclick="loadAdminApps()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>Refresh</button>
           </div>
+          <div style="padding:0 0 12px 0;"><input id="apps-search-input" type="text" class="form-control" placeholder="Search by name, username, or reference #…" oninput="filterAdminApps(this.value)" style="max-width:420px;"></div>
           <div class="tab-bar" id="admin-app-tabs">
             <button class="tab-btn active" onclick="switchAdminAppTab('police')">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Police Apps
@@ -1713,8 +1741,21 @@ function confirmDeleteWanted(id){document.getElementById('confirm-title').textCo
 // ════════════════════════════════════════════════════════════════
 // ARRESTS
 // ════════════════════════════════════════════════════════════════
-async function loadArrests(search=''){const url=search?'/arrests?search='+encodeURIComponent(search):'/arrests';const data=await api('GET',url);if(data.error){toast(data.error,'error');return;}const tbody=document.getElementById('arrests-table-body');const records=data.arrests||[];if(!records.length){tbody.innerHTML='<tr><td colspan="10"><div class="no-data"><p>No arrest records found</p></div></td></tr>';return;}tbody.innerHTML=records.map(r=>`<tr><td>${escHtml(r.arrest_id)}</td><td style="padding:8px 14px;">${r.photo_url?`<img src="${escHtml(r.photo_url)}" alt="Arrest Photo" class="criminal-mugshot-thumb" onclick="openArrestViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="Click to view" style="cursor:pointer;">`:`<div class="criminal-mugshot-placeholder" onclick="openArrestViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="No photo — click for details" style="cursor:pointer;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>No Photo</span></div>`}</td><td style="font-weight:600;color:var(--white)">${escHtml(r.suspect_name)}</td><td>${escHtml(r.character_id)}</td><td>${escHtml(r.arresting_officer)}</td><td>${escHtml(r.charges)}</td><td style="color:var(--gold-400)">₱${Number(r.fine_amount||0).toLocaleString()}</td><td>${escHtml(r.jail_time||'—')}</td><td>${formatDate(r.arrest_date)}</td><td><div class="actions-cell"><button class="btn btn-secondary btn-sm btn-icon" title="View Record" onclick="openArrestViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div></td></tr>`).join('');}
-function searchArrests(val){clearTimeout(searchTimers.arrests);searchTimers.arrests=setTimeout(()=>loadArrests(val),400);}
+async function loadArrests(search=''){
+  const s = _pageState.arrests;
+  s.search = search;
+  const params = new URLSearchParams({ page: s.page, pageSize: s.pageSize });
+  if (search) params.set('search', search);
+  const data=await api('GET','/arrests?'+params.toString());
+  if(data.error){toast(data.error,'error');return;}
+  const tbody=document.getElementById('arrests-table-body');
+  const records=data.arrests||[];
+  s.total = data.total ?? records.length;
+  if(!records.length){tbody.innerHTML='<tr><td colspan="10"><div class="no-data"><p>No arrest records found</p></div></td></tr>';renderPaginationBar('arrests-pagination','arrests',loadArrests);return;}
+  tbody.innerHTML=records.map(r=>`<tr><td>${escHtml(r.arrest_id)}</td><td style="padding:8px 14px;">${r.photo_url?`<img src="${escHtml(r.photo_url)}" alt="Arrest Photo" class="criminal-mugshot-thumb" onclick="openArrestViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="Click to view" style="cursor:pointer;">`:`<div class="criminal-mugshot-placeholder" onclick="openArrestViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="No photo — click for details" style="cursor:pointer;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>No Photo</span></div>`}</td><td style="font-weight:600;color:var(--white)">${escHtml(r.suspect_name)}</td><td>${escHtml(r.character_id)}</td><td>${escHtml(r.arresting_officer)}</td><td>${escHtml(r.charges)}</td><td style="color:var(--gold-400)">₱${Number(r.fine_amount||0).toLocaleString()}</td><td>${escHtml(r.jail_time||'—')}</td><td>${formatDate(r.arrest_date)}</td><td><div class="actions-cell"><button class="btn btn-secondary btn-sm btn-icon" title="View Record" onclick="openArrestViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="btn btn-warning btn-sm btn-icon" title="Edit Arrest" onclick="openEditArrest(${JSON.stringify(r).replace(/"/g,'&quot;')})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="btn btn-danger btn-sm btn-icon" title="Delete Arrest" onclick="deleteArrest(${r.id},'${escHtml(r.suspect_name)}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button></div></td></tr>`).join('');
+  renderPaginationBar('arrests-pagination','arrests',loadArrests);
+}
+function searchArrests(val){clearTimeout(searchTimers.arrests);_pageState.arrests.page=1;searchTimers.arrests=setTimeout(()=>loadArrests(val),400);}
 function openArrestViewer(r) {
   document.getElementById('av-id').textContent = r.arrest_id || '—';
   document.getElementById('av-name').textContent = r.suspect_name || '—';
@@ -1783,7 +1824,7 @@ tbody.innerHTML=records.map(r=>`<tr>
 </tr>`).join('');}
 function openEvidenceViewer(r) {
   document.getElementById('ev-view-id').textContent     = r.evidence_id || '—';
-  document.getElementById('ev-view-case').textContent   = r.case_number  || '—';
+  const evCase = document.getElementById('ev-view-case'); if(r.case_number){evCase.innerHTML=`<a href="#" style="color:var(--gold-300);text-decoration:underline;" onclick="event.preventDefault();closeModal('modal-evidence-viewer');navigateTo('cases')">${escHtml(r.case_number)}</a>`;}else{evCase.textContent='\xe2\x80\x94';}
   document.getElementById('ev-view-type').innerHTML     = `<span class="badge badge-warning">${escHtml(r.evidence_type)}</span>`;
   document.getElementById('ev-view-desc').textContent   = r.description  || '—';
   document.getElementById('ev-view-by').textContent     = r.uploaded_by  || '—';
@@ -1803,9 +1844,65 @@ function openEvidenceViewer(r) {
 async function createEvidence(){const body={case_number:document.getElementById('ev-case').value.trim(),evidence_type:document.getElementById('ev-type').value,description:document.getElementById('ev-desc').value.trim(),file_url:document.getElementById('ev-url').value.trim(),file_name:document.getElementById('ev-filename').value.trim()};if(!body.evidence_type||!body.description){toast('Type and description required','warning');return;}const res=await api('POST','/evidence/create',body);if(res.error){toast(res.error,'error');return;}toast('Evidence uploaded: '+res.evidence_id,'success');closeModal('modal-create-evidence');['ev-case','ev-desc','ev-url','ev-filename'].forEach(id=>document.getElementById(id).value='');document.getElementById('ev-type').value='';document.getElementById('ev-file-name').textContent='No file chosen';document.getElementById('ev-file-preview').innerHTML='';document.getElementById('ev-file-input').value='';loadEvidence();}
 
 // ════════════════════════════════════════════════════════════════
+// PAGINATION HELPERS
+// ════════════════════════════════════════════════════════════════
+const _pageState = {
+  arrests:  { page: 1, pageSize: 25, total: 0, search: '' },
+  criminals:{ page: 1, pageSize: 25, total: 0, search: '' },
+  vehicles: { page: 1, pageSize: 25, total: 0, search: '' },
+};
+
+function renderPaginationBar(containerId, stateKey, loadFn) {
+  const s = _pageState[stateKey];
+  const totalPages = Math.max(1, Math.ceil(s.total / s.pageSize));
+  const start = s.total === 0 ? 0 : (s.page - 1) * s.pageSize + 1;
+  const end = Math.min(s.page * s.pageSize, s.total);
+
+  // Build page number buttons (show up to 5 around current)
+  let pageNums = '';
+  const range = 2;
+  for (let p = 1; p <= totalPages; p++) {
+    if (p === 1 || p === totalPages || (p >= s.page - range && p <= s.page + range)) {
+      pageNums += `<button class="page-btn${p === s.page ? ' active' : ''}" onclick="_goPage('${stateKey}',${p})">${p}</button>`;
+    } else if (p === s.page - range - 1 || p === s.page + range + 1) {
+      pageNums += `<span style="color:var(--gray-400);padding:0 4px;font-size:12px;">…</span>`;
+    }
+  }
+
+  const bar = document.getElementById(containerId);
+  if (!bar) return;
+  bar.innerHTML = `
+    <div class="pagination-info">Showing ${start}–${end} of ${s.total} records</div>
+    <div class="pagination-controls">
+      <button class="page-btn" onclick="_goPage('${stateKey}',${s.page-1})" ${s.page<=1?'disabled':''}>&#8592;</button>
+      ${pageNums}
+      <button class="page-btn" onclick="_goPage('${stateKey}',${s.page+1})" ${s.page>=totalPages?'disabled':''}>&#8594;</button>
+      <select class="page-size-select" onchange="_changePageSize('${stateKey}',this.value)" title="Rows per page">
+        ${[10,25,50,100].map(n=>`<option value="${n}"${n===s.pageSize?' selected':''}>${n} / page</option>`).join('')}
+      </select>
+    </div>`;
+}
+
+function _goPage(stateKey, page) {
+  const s = _pageState[stateKey];
+  const totalPages = Math.max(1, Math.ceil(s.total / s.pageSize));
+  s.page = Math.max(1, Math.min(page, totalPages));
+  if (stateKey === 'arrests')   loadArrests(s.search);
+  if (stateKey === 'criminals') loadCriminals(s.search);
+  if (stateKey === 'vehicles')  loadVehicles(s.search);
+}
+
+function _changePageSize(stateKey, size) {
+  const s = _pageState[stateKey];
+  s.pageSize = parseInt(size);
+  s.page = 1;
+  _goPage(stateKey, 1);
+}
+
+// ════════════════════════════════════════════════════════════════
 // CRIMINALS
 // ════════════════════════════════════════════════════════════════
-async function loadCriminals(search=''){const url=search?'/criminals?search='+encodeURIComponent(search):'/criminals';const data=await api('GET',url);if(data.error){toast(data.error,'error');return;}const tbody=document.getElementById('criminals-table-body');const records=data.criminals||[];if(!records.length){tbody.innerHTML='<tr><td colspan="8"><div class="no-data"><p>No criminal records found</p></div></td></tr>';return;}tbody.innerHTML=records.map(r=>`<tr><td>${escHtml(r.character_id)}</td><td style="padding:8px 14px;">${r.mugshot_url?`<img src="${escHtml(r.mugshot_url)}" alt="Mugshot" class="criminal-mugshot-thumb" onclick="openMugshotViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="Click to view">`:`<div class="criminal-mugshot-placeholder" onclick="openMugshotViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="No mugshot — click for details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>No Photo</span></div>`}</td><td style="font-weight:600;color:var(--white)">${escHtml(r.full_name)}</td><td>${escHtml(r.criminal_history?r.criminal_history.substring(0,60)+(r.criminal_history.length>60?'…':''):'—')}</td><td style="color:${r.active_warrants?'var(--red-400)':'var(--gray-400)'}">${escHtml(r.active_warrants||'None')}</td><td>${escHtml(r.notes?r.notes.substring(0,40)+(r.notes.length>40?'…':''):'—')}</td><td>${formatDate(r.created_at)}</td><td><div class="actions-cell"><button class="btn btn-secondary btn-sm btn-icon" title="View Record" onclick="openMugshotViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button></div></td></tr>`).join('');}
+async function loadCriminals(search=''){const s=_pageState.criminals;s.search=search;const params=new URLSearchParams({page:s.page,pageSize:s.pageSize});if(search)params.set('search',search);const data=await api('GET','/criminals?'+params.toString());if(data.error){toast(data.error,'error');return;}const tbody=document.getElementById('criminals-table-body');const records=data.criminals||[];s.total=data.total??records.length;if(!records.length){tbody.innerHTML='<tr><td colspan="8"><div class="no-data"><p>No criminal records found</p></div></td></tr>';renderPaginationBar('criminals-pagination','criminals',loadCriminals);return;}tbody.innerHTML=records.map(r=>`<tr><td>${escHtml(r.character_id)}</td><td style="padding:8px 14px;">${r.mugshot_url?`<img src="${escHtml(r.mugshot_url)}" alt="Mugshot" class="criminal-mugshot-thumb" onclick="openMugshotViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="Click to view">`:`<div class="criminal-mugshot-placeholder" onclick="openMugshotViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})" title="No mugshot — click for details"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>No Photo</span></div>`}</td><td style="font-weight:600;color:var(--white)">${escHtml(r.full_name)}</td><td>${escHtml(r.criminal_history?r.criminal_history.substring(0,60)+(r.criminal_history.length>60?'\u2026':''):'\u2014')}</td><td style="color:${r.active_warrants?'var(--red-400)':'var(--gray-400)'}">${escHtml(r.active_warrants||'None')}</td><td>${escHtml(r.notes?r.notes.substring(0,40)+(r.notes.length>40?'\u2026':''):'\u2014')}</td><td>${formatDate(r.created_at)}</td><td><div class="actions-cell"><button class="btn btn-secondary btn-sm btn-icon" title="View Record" onclick="openMugshotViewer(${JSON.stringify(r).replace(/"/g,'&quot;')})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button><button class="btn btn-warning btn-sm btn-icon" title="Edit Criminal Record" onclick="openEditCriminal(${JSON.stringify(r).replace(/"/g,'&quot;')})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="btn btn-danger btn-sm btn-icon" title="Delete Criminal Record" onclick="deleteCriminal(${r.id},'${escHtml(r.full_name)}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button></div></td></tr>`).join('');renderPaginationBar('criminals-pagination','criminals',loadCriminals);}
 function openMugshotViewer(r) {
   document.getElementById('mv-name').textContent = r.full_name || '—';
   document.getElementById('mv-charid').textContent = r.character_id || '—';
@@ -1822,15 +1919,130 @@ function openMugshotViewer(r) {
   }
   openModal('modal-mugshot-viewer');
 }
-function searchCriminals(val){clearTimeout(searchTimers.criminals);searchTimers.criminals=setTimeout(()=>loadCriminals(val),400);}
+function searchCriminals(val){clearTimeout(searchTimers.criminals);_pageState.criminals.page=1;searchTimers.criminals=setTimeout(()=>loadCriminals(val),400);}
 async function createCriminal(){const body={full_name:document.getElementById('cr-name').value.trim(),character_id:document.getElementById('cr-charid').value.trim(),mugshot_url:document.getElementById('cr-mugshot').value.trim(),criminal_history:document.getElementById('cr-history').value.trim(),previous_arrests:document.getElementById('cr-arrests').value.trim(),active_warrants:document.getElementById('cr-warrants').value.trim(),notes:document.getElementById('cr-notes').value.trim()};if(!body.full_name||!body.character_id){toast('Name and Char ID required','warning');return;}const res=await api('POST','/criminals/create',body);if(res.error){toast(res.error,'error');return;}toast('Criminal record added','success');closeModal('modal-create-criminal');['cr-name','cr-charid','cr-mugshot','cr-history','cr-arrests','cr-warrants','cr-notes'].forEach(id=>document.getElementById(id).value='');document.getElementById('cr-mugshot-filename').textContent='No file chosen';document.getElementById('cr-mugshot-preview').innerHTML='';document.getElementById('cr-mugshot-file').value='';loadCriminals();}
 
 // ════════════════════════════════════════════════════════════════
 // VEHICLES
 // ════════════════════════════════════════════════════════════════
-async function loadVehicles(search=''){const url=search?'/vehicles?search='+encodeURIComponent(search):'/vehicles';const data=await api('GET',url);if(data.error){toast(data.error,'error');return;}const tbody=document.getElementById('vehicles-table-body');const records=data.vehicles||[];if(!records.length){tbody.innerHTML='<tr><td colspan="7"><div class="no-data"><p>No vehicles found</p></div></td></tr>';return;}tbody.innerHTML=records.map(r=>`<tr><td style="font-family:var(--font-mono);font-weight:700;color:var(--gold-300)">${escHtml(r.plate_number)}</td><td style="color:var(--white)">${escHtml(r.vehicle_model)}</td><td>${escHtml(r.owner)}</td><td>${escHtml(r.owner_character_id||'—')}</td><td>${renderRegStatusBadge(r.registration_status)}</td><td>${r.impound_status==='Impounded'?'<span class="badge badge-danger">Impounded</span>':'<span class="badge badge-active">None</span>'}</td><td>${escHtml(r.notes||'—')}</td></tr>`).join('');}
-function searchVehicles(val){clearTimeout(searchTimers.vehicles);searchTimers.vehicles=setTimeout(()=>loadVehicles(val),400);}
+async function loadVehicles(search=''){const s=_pageState.vehicles;s.search=search;const params=new URLSearchParams({page:s.page,pageSize:s.pageSize});if(search)params.set('search',search);const data=await api('GET','/vehicles?'+params.toString());if(data.error){toast(data.error,'error');return;}const tbody=document.getElementById('vehicles-table-body');const records=data.vehicles||[];s.total=data.total??records.length;if(!records.length){tbody.innerHTML='<tr><td colspan="7"><div class="no-data"><p>No vehicles found</p></div></td></tr>';renderPaginationBar('vehicles-pagination','vehicles',loadVehicles);return;}tbody.innerHTML=records.map(r=>`<tr><td style="font-family:var(--font-mono);font-weight:700;color:var(--gold-300)">${escHtml(r.plate_number)}</td><td style="color:var(--white)">${escHtml(r.vehicle_model)}</td><td>${escHtml(r.owner)}</td><td>${escHtml(r.owner_character_id||'\u2014')}</td><td>${renderRegStatusBadge(r.registration_status)}</td><td>${r.impound_status==='Impounded'?'<span class="badge badge-danger">Impounded</span>':'<span class="badge badge-active">None</span>'}</td><td>${escHtml(r.notes||'\u2014')}</td><td><div class="actions-cell"><button class="btn btn-warning btn-sm btn-icon" title="Edit Vehicle" onclick="openEditVehicle(${JSON.stringify(r).replace(/&quot;/g,'&amp;quot;')})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button><button class="btn btn-danger btn-sm btn-icon" title="Delete Vehicle" onclick="deleteVehicle(${r.id},'${escHtml(r.plate_number)}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg></button></div></td></tr>`).join('');renderPaginationBar('vehicles-pagination','vehicles',loadVehicles);}
+function searchVehicles(val){clearTimeout(searchTimers.vehicles);_pageState.vehicles.page=1;searchTimers.vehicles=setTimeout(()=>loadVehicles(val),400);}
 async function createVehicle(){const body={plate_number:document.getElementById('v-plate').value.trim(),vehicle_model:document.getElementById('v-model').value.trim(),owner:document.getElementById('v-owner').value.trim(),owner_character_id:document.getElementById('v-ownerid').value.trim(),registration_status:document.getElementById('v-regstatus').value,impound_status:document.getElementById('v-impound').value,notes:document.getElementById('v-notes').value.trim()};if(!body.plate_number||!body.vehicle_model||!body.owner){toast('Plate, model, and owner required','warning');return;}const res=await api('POST','/vehicles/create',body);if(res.error){toast(res.error,'error');return;}toast('Vehicle registered','success');closeModal('modal-create-vehicle');['v-plate','v-model','v-owner','v-ownerid','v-notes'].forEach(id=>document.getElementById(id).value='');loadVehicles();}
+
+// ═══════════════════════════════════════════════════════
+// EDIT / DELETE — ARRESTS
+// ═══════════════════════════════════════════════════════
+function openEditArrest(r) {
+  document.getElementById('ea-id').value       = r.id;
+  document.getElementById('ea-name').value     = r.suspect_name || '';
+  document.getElementById('ea-charid').value   = r.character_id || '';
+  document.getElementById('ea-charges').value  = r.charges || '';
+  document.getElementById('ea-fine').value     = r.fine_amount || 0;
+  document.getElementById('ea-jail').value     = r.jail_time || '';
+  document.getElementById('ea-location').value = r.arrest_location || r.location || '';
+  document.getElementById('ea-evidence').value = r.evidence_notes || '';
+  openModal('modal-edit-arrest');
+}
+async function saveEditArrest() {
+  const body = {
+    id:              parseInt(document.getElementById('ea-id').value),
+    suspect_name:    document.getElementById('ea-name').value.trim(),
+    character_id:    document.getElementById('ea-charid').value.trim(),
+    charges:         document.getElementById('ea-charges').value.trim(),
+    fine_amount:     parseFloat(document.getElementById('ea-fine').value) || 0,
+    jail_time:       document.getElementById('ea-jail').value.trim(),
+    arrest_location: document.getElementById('ea-location').value.trim(),
+    evidence_notes:  document.getElementById('ea-evidence').value.trim(),
+  };
+  if (!body.suspect_name || !body.charges) { toast('Name and charges required','warning'); return; }
+  const res = await api('PUT', '/arrests/update', body);
+  if (res.error) { toast(res.error,'error'); return; }
+  toast('Arrest record updated','success');
+  closeModal('modal-edit-arrest');
+  loadArrests();
+}
+async function deleteArrest(id, name) {
+  if (!confirm(`Delete arrest record for "${name}"?\nThis cannot be undone.`)) return;
+  const res = await api('POST', '/arrests/delete', { id });
+  if (res.error) { toast(res.error,'error'); return; }
+  toast('Arrest record deleted','success');
+  loadArrests();
+}
+
+// ═══════════════════════════════════════════════════════
+// EDIT / DELETE — CRIMINALS
+// ═══════════════════════════════════════════════════════
+function openEditCriminal(r) {
+  document.getElementById('ecr-id').value       = r.id;
+  document.getElementById('ecr-name').value     = r.full_name || '';
+  document.getElementById('ecr-history').value  = r.criminal_history || '';
+  document.getElementById('ecr-warrants').value = r.active_warrants || '';
+  document.getElementById('ecr-notes').value    = r.notes || '';
+  document.getElementById('ecr-mugshot').value  = r.mugshot_url || '';
+  openModal('modal-edit-criminal');
+}
+async function saveEditCriminal() {
+  const body = {
+    id:               parseInt(document.getElementById('ecr-id').value),
+    full_name:        document.getElementById('ecr-name').value.trim(),
+    criminal_history: document.getElementById('ecr-history').value.trim(),
+    active_warrants:  document.getElementById('ecr-warrants').value.trim(),
+    notes:            document.getElementById('ecr-notes').value.trim(),
+    mugshot_url:      document.getElementById('ecr-mugshot').value.trim() || null,
+  };
+  if (!body.full_name) { toast('Name is required','warning'); return; }
+  const res = await api('PUT', '/criminals/update', body);
+  if (res.error) { toast(res.error,'error'); return; }
+  toast('Criminal record updated','success');
+  closeModal('modal-edit-criminal');
+  loadCriminals();
+}
+async function deleteCriminal(id, name) {
+  if (!confirm(`Delete criminal record for "${name}"?\nThis cannot be undone.`)) return;
+  const res = await api('POST', '/criminals/delete', { id });
+  if (res.error) { toast(res.error,'error'); return; }
+  toast('Criminal record deleted','success');
+  loadCriminals();
+}
+
+// ═══════════════════════════════════════════════════════
+// EDIT / DELETE — VEHICLES
+// ═══════════════════════════════════════════════════════
+function openEditVehicle(r) {
+  document.getElementById('ev2-id').value       = r.id;
+  document.getElementById('ev2-model').value    = r.vehicle_model || '';
+  document.getElementById('ev2-owner').value    = r.owner || '';
+  document.getElementById('ev2-ownerid').value  = r.owner_character_id || r.owner_id || '';
+  document.getElementById('ev2-regstatus').value= r.registration_status || r.status || 'Registered';
+  document.getElementById('ev2-impound').value  = r.impound_status || 'None';
+  document.getElementById('ev2-notes').value    = r.notes || '';
+  document.getElementById('ev2-plate-display').textContent = r.plate_number;
+  openModal('modal-edit-vehicle');
+}
+async function saveEditVehicle() {
+  const body = {
+    id:                  parseInt(document.getElementById('ev2-id').value),
+    vehicle_model:       document.getElementById('ev2-model').value.trim(),
+    owner:               document.getElementById('ev2-owner').value.trim(),
+    owner_character_id:  document.getElementById('ev2-ownerid').value.trim(),
+    registration_status: document.getElementById('ev2-regstatus').value,
+    impound_status:      document.getElementById('ev2-impound').value,
+    notes:               document.getElementById('ev2-notes').value.trim(),
+  };
+  if (!body.vehicle_model || !body.owner) { toast('Model and owner required','warning'); return; }
+  const res = await api('PUT', '/vehicles/update', body);
+  if (res.error) { toast(res.error,'error'); return; }
+  toast('Vehicle updated','success');
+  closeModal('modal-edit-vehicle');
+  loadVehicles();
+}
+async function deleteVehicle(id, plate) {
+  if (!confirm(`Delete vehicle record for plate "${plate}"?\nThis cannot be undone.`)) return;
+  const res = await api('POST', '/vehicles/delete', { id });
+  if (res.error) { toast(res.error,'error'); return; }
+  toast('Vehicle deleted','success');
+  loadVehicles();
+}
 
 // ════════════════════════════════════════════════════════════════
 // ANNOUNCEMENTS
@@ -1871,11 +2083,25 @@ async function loadRoster() {
   await renderRoster(search ? search.value : '');
 }
 
-function officerCardHtml(o) {
+function officerCardHtml(o, userMap) {
   const photo = getUniformForRank(o.rank) || '';
   const photoInner = photo
     ? `<img src="${escHtml(photo)}" alt="${escHtml(o.name)}">`
     : `<div class="roster-photo-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>No Uniform Set</span></div>`;
+
+  // Match roster entry to a user account by badge number or name
+  let linkedUser = null;
+  if (userMap && o.badge) {
+    linkedUser = userMap.find(u => u.badge_number && String(u.badge_number) === String(o.badge));
+  }
+  if (!linkedUser && userMap && o.name) {
+    const nameLower = o.name.toLowerCase();
+    linkedUser = userMap.find(u => (u.full_name||'').toLowerCase() === nameLower || (u.username||'').toLowerCase() === nameLower);
+  }
+  const accountBadge = linkedUser
+    ? `<div style="margin-top:6px;display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green-400,#4ade80);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span title="Linked user account">@${escHtml(linkedUser.username)}</span></div>`
+    : `<div style="margin-top:6px;display:flex;align-items:center;gap:5px;font-size:11px;color:var(--gray-500,#6b7280);"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span>No linked account</span></div>`;
+
   return `<div class="roster-officer-card">
     <div class="roster-photo">${photoInner}</div>
     <div class="roster-officer-body">
@@ -1885,6 +2111,7 @@ function officerCardHtml(o) {
         <div><span>Division</span><strong>${escHtml(o.division||'—')}</strong></div>
         <div><span>Badge #</span><strong>${escHtml(o.badge||'—')}</strong></div>
       </div>
+      ${accountBadge}
       <div class="roster-officer-actions police-only">
         <button class="btn btn-secondary btn-sm btn-icon" title="Edit Officer" onclick="openEditOfficerModal(${o.id})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
         <button class="btn btn-danger btn-sm btn-icon" title="Remove Officer" onclick="confirmDeleteOfficer(${o.id},'${escHtml(o.name).replace(/'/g,"&#39;")}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></button>
@@ -1898,8 +2125,13 @@ async function renderRoster(search='') {
   if (!container) return;
 
   const url = search ? '/roster?search=' + encodeURIComponent(search) : '/roster';
-  const data = await api('GET', url);
+  // Fetch roster + user list in parallel for account linkage
+  const [data, usersData] = await Promise.all([
+    api('GET', url),
+    isPoliceOrAdminUser() ? api('GET', '/users') : Promise.resolve({ users: [] }),
+  ]);
   if (data.error) { toast(data.error, 'error'); return; }
+  const userMap = (usersData.users || []);
 
   let list = data.officers || [];
   if (!list.length) {
@@ -1917,13 +2149,27 @@ async function renderRoster(search='') {
   groups['Other'] = [];
   list.forEach(o => { const key = POLICE_RANKS.includes(o.rank) ? o.rank : 'Other'; groups[key].push(o); });
 
+  // Count unlinked officers for admin awareness
+  const unlinked = list.filter(o => {
+    const byBadge = o.badge && userMap.find(u => u.badge_number && String(u.badge_number) === String(o.badge));
+    const byName  = !byBadge && o.name && userMap.find(u => (u.full_name||'').toLowerCase() === o.name.toLowerCase() || (u.username||'').toLowerCase() === o.name.toLowerCase());
+    return !byBadge && !byName;
+  }).length;
+
   let html = '';
+  if (unlinked > 0 && isPoliceOrAdminUser()) {
+    html += `<div style="background:rgba(234,179,8,0.08);border:1px solid rgba(234,179,8,0.25);border-radius:8px;padding:10px 16px;font-size:12px;color:var(--gold-300);display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span><strong>${unlinked}</strong> roster ${unlinked === 1 ? 'entry has' : 'entries have'} no linked user account. Match badge numbers or display names in user profiles to resolve.</span>
+    </div>`;
+  }
+
   [...POLICE_RANKS, 'Other'].forEach(rank => {
     const officers = groups[rank];
     if (!officers.length) return;
     html += `<div class="card roster-rank-card">
       <div class="card-header"><div class="card-title">${escHtml(rank)}<span class="badge badge-police" style="margin-left:8px;">${officers.length}</span></div></div>
-      <div class="card-body"><div class="roster-grid">${officers.map(officerCardHtml).join('')}</div></div>
+      <div class="card-body"><div class="roster-grid">${officers.map(o => officerCardHtml(o, userMap)).join('')}</div></div>
     </div>`;
   });
   container.innerHTML = html;
@@ -2931,6 +3177,9 @@ async function checkExistingApps() {
 // — Admin: load all applications —
 async function loadAdminApps() {
   const res=await api('GET','/applications/all'); const apps=res.applications||[];
+  _allApps = apps;
+  const searchQ = (document.getElementById('apps-search-input')||{}).value||'';
+  if(searchQ) { filterAdminApps(searchQ); }
   const policeApps=apps.filter(a=>a.application_type==='police');
   const weaponApps=apps.filter(a=>a.application_type==='weapon_license');
   const reinstateApps=apps.filter(a=>a.application_type==='reinstatement');
@@ -2946,9 +3195,25 @@ async function loadAdminApps() {
   renderAdminAppList('admin-weapon-list',weaponApps,'weapon_license');
   renderAdminAppList('admin-reinstatement-list',reinstateApps,'reinstatement');
 }
-function renderAdminAppList(containerId,apps,type) {
+let _allApps = [];
+function filterAdminApps(q) {
+  const query = q.toLowerCase().trim();
+  ['admin-police-list','admin-weapon-list','admin-reinstatement-list'].forEach(cid => {
+    const type = cid === 'admin-police-list' ? 'police' : cid === 'admin-weapon-list' ? 'weapon_license' : 'reinstatement';
+    const filtered = query ? _allApps.filter(a => a.application_type === type && (
+      (a.applicant_name||'').toLowerCase().includes(query) ||
+      (a.submitted_by||'').toLowerCase().includes(query) ||
+      String(a.id).includes(query)
+    )) : _allApps.filter(a => a.application_type === type);
+    renderAdminAppList(cid, filtered, type, true);
+  });
+}
+function renderAdminAppList(containerId,apps,type,skipCache) {
   const container=document.getElementById(containerId);
-  if(!apps.length){container.innerHTML=`<div class="no-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>No applications found</p><span>Submitted applications will appear here</span></div>`;return;}
+  const empty = skipCache
+    ? '<div class="no-data"><p>No matching applications</p></div>'
+    : `<div class="no-data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><p>No applications found</p><span>Submitted applications will appear here</span></div>`;
+  if(!apps.length){container.innerHTML=empty;return;}
   container.innerHTML=apps.map(a=>buildAppCard(a,type)).join('');
 }
 function buildAppCard(a,type) {
@@ -2956,6 +3221,9 @@ function buildAppCard(a,type) {
   const appId='app-body-'+a.id; const personal=answers.personal_info||{};
   const statusBadge=a.status==='pending'?'<span class="badge badge-pending">Pending Review</span>':a.status==='approved'?'<span class="badge badge-approved">Approved</span>':'<span class="badge badge-rejected">Rejected</span>';
   const displayName = type==='reinstatement' ? (personal.fullname||a.applicant_name||'—') : (personal.name||a.applicant_name||'—');
+  const typeLabels={'police':'Police Application','weapon_license':'Weapon License','reinstatement':'Reinstatement'};
+  const typeIcons={'police':'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>','weapon_license':'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 3l3 3-9 9-4 1 1-4 9-9z"/><line x1="15" y1="6" x2="18" y2="9"/></svg>','reinstatement':'<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>'};
+  const typePill=`<span class="app-card-type-pill type-${escHtml(type)}">${typeIcons[type]||''}${escHtml(typeLabels[type]||type)}</span>`;
   let qaHtml='';
   if(type==='police'){
     if(answers.stats_screenshot){qaHtml+=`<div class="qa-item"><div class="qa-question">Q2 / 10 — /stats Screenshot</div><div class="qa-screenshot"><img src="${escHtml(answers.stats_screenshot)}" alt="Stats" title="Click to preview" onclick="openPhotoLightbox('${escHtml(answers.stats_screenshot).replace(/'/g,"\\'")}','Stats Screenshot')" onerror="this.outerHTML='<span style=\\'font-size:12px;color:var(--red-400);\\'>Image failed to load</span>'"></div></div>`;}
@@ -2990,7 +3258,13 @@ function buildAppCard(a,type) {
   }
   const reopenBtn=canReviewApps(type) && (a.status==='approved'||a.status==='rejected')?`<button class="btn btn-sm" style="background:rgba(41,128,185,0.15);border:1px solid rgba(41,128,185,0.4);color:#5DADE2;" onclick="event.stopPropagation();reopenApplication(${a.id},'${escHtml(a.submitted_by)}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.71"/></svg>Reopen</button>`:'';  const actionBtns=a.status==='pending' && canReviewApps(type) ?`<button class="btn btn-success btn-sm" onclick="event.stopPropagation();handleAppDecision(${a.id},'approved','${escHtml(a.submitted_by)}','${type}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Approve</button><button class="btn btn-danger btn-sm" onclick="event.stopPropagation();handleAppDecision(${a.id},'rejected','${escHtml(a.submitted_by)}','${type}')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Reject</button>${reopenBtn}`:a.status==='pending'?'<span style="font-size:11px;color:var(--gray-400);font-style:italic;padding:4px 8px;">View Only</span>':reopenBtn;
   const adminNoteHtml=a.admin_note?`<div style="margin-top:12px;background:rgba(201,162,39,0.06);border:1px solid rgba(201,162,39,0.15);border-radius:6px;padding:10px 14px;font-size:12px;color:var(--gray-200);"><strong style="color:var(--gold-400);">Admin Note:</strong> ${escHtml(a.admin_note)}</div>`:'';
-  return `<div class="app-card"><div class="app-card-header" onclick="toggleAppCard(${a.id})"><div class="app-card-meta"><h4>${escHtml(displayName)}&nbsp;${statusBadge}</h4><p>Submitted by: <strong style="color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</strong>${personal.age?`&nbsp;|&nbsp;Age: ${escHtml(personal.age)}`:''}${personal.gender?`&nbsp;|&nbsp;Gender: ${escHtml(personal.gender)}`:''}${personal.years_of_residency?`&nbsp;|&nbsp;Residency: ${escHtml(personal.years_of_residency)}`:''}</p><div class="mono">Submitted: ${formatDate(a.created_at)}&nbsp;|&nbsp;Ref: #${a.id}</div></div><div class="app-card-actions">${actionBtns}<button class="btn btn-secondary btn-sm btn-icon" title="Toggle Details"><svg id="chevron-${a.id}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button></div></div><div class="app-card-body" id="${appId}"><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;background:var(--navy-500);border-radius:8px;padding:14px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Full Name</div><div style="font-size:14px;color:var(--white);">${escHtml(displayName)}</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Username</div><div style="font-size:14px;color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</div></div>${personal.age?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Age</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.age)}</div></div>`:''}${personal.gender?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Gender</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.gender)}</div></div>`:''}${personal.years_of_residency?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Years of Residency</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.years_of_residency)}</div></div>`:''}</div>${qaHtml}${adminNoteHtml}</div></div>`;
+  // — Audit trail: prior applications submitted by the same user, so a reviewer can see history (e.g. previous rejections) before deciding —
+  const priorApps=(_allApps||[]).filter(x=>x.submitted_by===a.submitted_by && x.id!==a.id).sort((x,y)=>new Date(y.created_at)-new Date(x.created_at));
+  const priorRejectedCount=priorApps.filter(x=>x.status==='rejected').length;
+  const historyBadge=priorApps.length?`<span class="badge ${priorRejectedCount?'badge-rejected':'badge-pending'}" style="margin-left:6px;font-size:10px;" title="This applicant has ${priorApps.length} prior application(s) on file">${priorRejectedCount?`${priorRejectedCount} prior rejection${priorRejectedCount>1?'s':''}`:`${priorApps.length} prior application${priorApps.length>1?'s':''}`}</span>`:'';
+  const historyTypeLabels={'police':'Police','weapon_license':'Weapon License','reinstatement':'Reinstatement'};
+  const historyHtml=priorApps.length?`<div style="margin-bottom:16px;background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.2);border-radius:8px;padding:12px 14px;"><div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red-400);margin-bottom:8px;">⟲ Application History — ${priorApps.length} prior submission${priorApps.length>1?'s':''} by this user</div>${priorApps.map(p=>{const pBadge=p.status==='pending'?'<span class="badge badge-pending">Pending</span>':p.status==='approved'?'<span class="badge badge-approved">Approved</span>':'<span class="badge badge-rejected">Rejected</span>';return `<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding:6px 0;border-top:1px solid rgba(255,255,255,0.06);font-size:12px;"><div><strong style="color:var(--white);">${escHtml(historyTypeLabels[p.application_type]||p.application_type)}</strong>&nbsp;${pBadge}&nbsp;<span class="mono" style="color:var(--gray-400);">Ref #${p.id} — ${formatDate(p.created_at)}</span>${p.admin_note?`<div style="color:var(--gray-300);margin-top:2px;">Note: ${escHtml(p.admin_note)}</div>`:''}</div></div>`;}).join('')}</div>`:'';
+  return `<div class="app-card" data-apptype="${escHtml(type)}" data-app-id="${a.id}" data-app-type="${escHtml(type)}"><div class="app-card-header" onclick="toggleAppCard(${a.id})"><div class="app-card-meta"><h4>${typePill}${escHtml(displayName)}&nbsp;${statusBadge}${historyBadge}</h4><p>Submitted by: <strong style="color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</strong>${personal.age?`&nbsp;|&nbsp;Age: ${escHtml(personal.age)}`:''}${personal.gender?`&nbsp;|&nbsp;Gender: ${escHtml(personal.gender)}`:''}${personal.years_of_residency?`&nbsp;|&nbsp;Residency: ${escHtml(personal.years_of_residency)}`:''}</p><div class="mono">Submitted: ${formatDate(a.created_at)}&nbsp;|&nbsp;Ref: #${a.id}</div></div><div class="app-card-actions">${actionBtns}<button class="btn btn-secondary btn-sm btn-icon" title="Toggle Details"><svg id="chevron-${a.id}" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button></div></div><div class="app-card-body" id="${appId}">${historyHtml}<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;background:var(--navy-500);border-radius:8px;padding:14px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Full Name</div><div style="font-size:14px;color:var(--white);">${escHtml(displayName)}</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Username</div><div style="font-size:14px;color:var(--gold-300);">${escHtml(a.submitted_by||'—')}</div></div>${personal.age?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Age</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.age)}</div></div>`:''}${personal.gender?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Gender</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.gender)}</div></div>`:''}${personal.years_of_residency?`<div><div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-400);margin-bottom:4px;">Years of Residency</div><div style="font-size:14px;color:var(--white);">${escHtml(personal.years_of_residency)}</div></div>`:''}</div>${qaHtml}${adminNoteHtml}</div></div>`;
 }
 function toggleAppCard(id){const body=document.getElementById('app-body-'+id);const chevron=document.getElementById('chevron-'+id);const isOpen=body.classList.toggle('open');if(chevron)chevron.style.transform=isOpen?'rotate(180deg)':'';}
 
@@ -3641,5 +3915,15 @@ function _lbKeyHandler(e) { if (e.key === 'Escape') closePhotoLightbox(); }
   drawFrame();
 })();
 </script>
+
+<!-- ── EDIT ARREST MODAL ── -->
+<div id="modal-edit-arrest" class="modal-overlay"><div class="modal"><div class="modal-header"><div class="modal-title">Edit Arrest Record</div><button class="modal-close" onclick="closeModal('modal-edit-arrest')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><input type="hidden" id="ea-id"><div class="form-grid"><div class="form-group"><label>Suspect Name *</label><input type="text" id="ea-name" class="form-control"></div><div class="form-group"><label>Character ID</label><input type="text" id="ea-charid" class="form-control"></div><div class="form-group full"><label>Charges *</label><input type="text" id="ea-charges" class="form-control"></div><div class="form-group"><label>Fine Amount (₱)</label><input type="number" id="ea-fine" class="form-control" min="0"></div><div class="form-group"><label>Jail Time</label><input type="text" id="ea-jail" class="form-control" placeholder="e.g. 6 months, Life"></div><div class="form-group"><label>Arrest Location</label><input type="text" id="ea-location" class="form-control"></div><div class="form-group full"><label>Evidence / Notes</label><textarea id="ea-evidence" class="form-control"></textarea></div></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-edit-arrest')">Cancel</button><button class="btn btn-primary" onclick="saveEditArrest()">Save Changes</button></div></div></div>
+
+<!-- ── EDIT CRIMINAL MODAL ── -->
+<div id="modal-edit-criminal" class="modal-overlay"><div class="modal"><div class="modal-header"><div class="modal-title">Edit Criminal Record</div><button class="modal-close" onclick="closeModal('modal-edit-criminal')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><input type="hidden" id="ecr-id"><div class="form-grid"><div class="form-group full"><label>Full Name *</label><input type="text" id="ecr-name" class="form-control"></div><div class="form-group full"><label>Mugshot URL</label><input type="text" id="ecr-mugshot" class="form-control" placeholder="https://..."></div><div class="form-group full"><label>Criminal History</label><textarea id="ecr-history" class="form-control"></textarea></div><div class="form-group full"><label>Active Warrants</label><textarea id="ecr-warrants" class="form-control"></textarea></div><div class="form-group full"><label>Notes</label><textarea id="ecr-notes" class="form-control"></textarea></div></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-edit-criminal')">Cancel</button><button class="btn btn-primary" onclick="saveEditCriminal()">Save Changes</button></div></div></div>
+
+<!-- ── EDIT VEHICLE MODAL ── -->
+<div id="modal-edit-vehicle" class="modal-overlay"><div class="modal"><div class="modal-header"><div class="modal-title">Edit Vehicle — <span id="ev2-plate-display" style="color:var(--gold-300);font-family:var(--font-mono);"></span></div><button class="modal-close" onclick="closeModal('modal-edit-vehicle')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div><div class="modal-body"><input type="hidden" id="ev2-id"><div class="form-grid"><div class="form-group full"><label>Vehicle Model *</label><input type="text" id="ev2-model" class="form-control"></div><div class="form-group"><label>Owner *</label><input type="text" id="ev2-owner" class="form-control"></div><div class="form-group"><label>Owner Char ID</label><input type="text" id="ev2-ownerid" class="form-control"></div><div class="form-group"><label>Registration Status</label><select id="ev2-regstatus" class="form-control"><option>Registered</option><option>Unregistered</option><option>Expired</option><option>Stolen</option></select></div><div class="form-group"><label>Impound Status</label><select id="ev2-impound" class="form-control"><option>None</option><option>Impounded</option></select></div><div class="form-group full"><label>Notes</label><textarea id="ev2-notes" class="form-control"></textarea></div></div></div><div class="modal-footer"><button class="btn btn-secondary" onclick="closeModal('modal-edit-vehicle')">Cancel</button><button class="btn btn-primary" onclick="saveEditVehicle()">Save Changes</button></div></div></div>
+
 </body>
 </html>
