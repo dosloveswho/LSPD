@@ -1258,7 +1258,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
             <option>Special Weapons And Tactics (SWAT)</option>
             <option>Gang and Narcotics Division (GND)</option>
             <option>Internal Affairs (IA)</option>
-            <option>Training &amp; Employment Division (FTO)</option>
+            <option>Field &amp; Training Officer (FTO)</option>
             <option>Traffic Enforcement Unit (TEU)</option>
             <option>Firearm Licensing</option>
           </select>
@@ -1355,10 +1355,10 @@ const REINSTATEMENT_QUESTIONS = [
   { q: "What have you learned since leaving the department?", hint: "Reflect honestly — personal growth, skills, or realizations." },
   { q: "What contributions can you bring to the department upon your return?", hint: "Be specific about what value you add — skills, dedication, experience." },
   { q: "Why should the department choose to reinstate you instead of requiring you to go through the standard recruitment process?", hint: "Make a compelling case for why reinstatement is the right path for you." },
-  { q: "If reinstated, are you willing to follow all department policies, regulations, and orders from superior officers? (Answer Yes or No and explain.)", hint: "Answer clearly. If yes, explain your commitment. If no, explain why." },
-  { q: "Are you prepared to start at a lower rank if required? (Answer Yes or No and explain.)", hint: "Answer honestly and explain your stance." },
-  { q: "Have you been involved in any criminal activity or received any administrative punishments since leaving the department? If yes, explain.", hint: "Be truthful. Concealing this information will result in disqualification." },
-  { q: "Have you previously submitted a reinstatement application? If yes, provide the outcome.", hint: "State Yes or No. If yes, explain when and what the decision was." },
+  { q: "If reinstated, are you willing to follow all department policies, regulations, and orders from superior officers?", hint: "Explain your commitment to following department policies and orders.", yesno: true },
+  { q: "Are you prepared to start at a lower rank if required?", hint: "Explain your stance on starting at a lower rank.", yesno: true },
+  { q: "Have you been involved in any criminal activity or received any administrative punishments since leaving the department?", hint: "Be truthful. Concealing this information will result in disqualification.", yesno: true },
+  { q: "Have you previously submitted a reinstatement application?", hint: "Explain when you applied and what the outcome was.", yesno: true },
 ];
 
 // ════════════════════════════════════════════════════════════════
@@ -2528,12 +2528,66 @@ function buildWeaponQuestions() {
 function buildReinstateQuestions() {
   const wrap = document.getElementById('reinstatement-questions-wrap');
   if (!wrap) return;
-  wrap.innerHTML = REINSTATEMENT_QUESTIONS.map((item, i) => `
+  wrap.innerHTML = REINSTATEMENT_QUESTIONS.map((item, i) => {
+    if (item.yesno) {
+      return `
+    <div class="question-block">
+      <div class="question-num">Reinstatement Question ${i + 1} / ${REINSTATEMENT_QUESTIONS.length}</div>
+      <div class="question-text">${escHtml(item.q)}</div>
+      <div style="display:flex;gap:10px;margin-bottom:10px;">
+        <button type="button" id="rq-${i}-yes" onclick="handleYesNo('rq-${i}','yes','updateReinstateProgress')"
+          style="padding:8px 22px;border-radius:6px;border:1px solid rgba(39,174,96,0.4);background:rgba(26,122,78,0.1);color:var(--green-400);font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.15s;">
+          YES
+        </button>
+        <button type="button" id="rq-${i}-no" onclick="handleYesNo('rq-${i}','no','updateReinstateProgress')"
+          style="padding:8px 22px;border-radius:6px;border:1px solid rgba(192,57,43,0.4);background:rgba(192,57,43,0.1);color:var(--red-400);font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:all 0.15s;">
+          NO
+        </button>
+      </div>
+      <input type="hidden" id="rq-${i}-val" value="">
+      <div id="rq-${i}-explain" style="display:none;">
+        <textarea id="rq-${i}" class="form-control" placeholder="${escHtml(item.hint)}" rows="3" oninput="updateReinstateProgress()"></textarea>
+      </div>
+    </div>`;
+    }
+    return `
     <div class="question-block">
       <div class="question-num">Reinstatement Question ${i + 1} / ${REINSTATEMENT_QUESTIONS.length}</div>
       <div class="question-text">${escHtml(item.q)}</div>
       <textarea id="rq-${i}" class="form-control" placeholder="${escHtml(item.hint)}" rows="4" oninput="updateReinstateProgress()"></textarea>
-    </div>`).join('');
+    </div>`;
+  }).join('');
+}
+
+function handleYesNo(baseId, choice, progressFn) {
+  const yesBtn = document.getElementById(baseId + '-yes');
+  const noBtn  = document.getElementById(baseId + '-no');
+  const valEl  = document.getElementById(baseId + '-val');
+  const explainEl = document.getElementById(baseId + '-explain');
+
+  if (!yesBtn || !noBtn || !valEl) return;
+  valEl.value = choice;
+
+  if (choice === 'yes') {
+    yesBtn.style.background = 'rgba(26,122,78,0.45)';
+    yesBtn.style.borderColor = 'var(--green-400)';
+    yesBtn.style.boxShadow = '0 0 8px rgba(39,174,96,0.3)';
+    noBtn.style.background  = 'rgba(192,57,43,0.1)';
+    noBtn.style.borderColor = 'rgba(192,57,43,0.4)';
+    noBtn.style.boxShadow   = 'none';
+  } else {
+    noBtn.style.background  = 'rgba(192,57,43,0.45)';
+    noBtn.style.borderColor = 'var(--red-400)';
+    noBtn.style.boxShadow   = '0 0 8px rgba(192,57,43,0.3)';
+    yesBtn.style.background = 'rgba(26,122,78,0.1)';
+    yesBtn.style.borderColor = 'rgba(39,174,96,0.4)';
+    yesBtn.style.boxShadow  = 'none';
+  }
+  if (explainEl) explainEl.style.display = 'block';
+
+  if (progressFn === 'updateReinstateProgress') updateReinstateProgress();
+  else if (progressFn === 'updatePoliceProgress') updatePoliceProgress();
+  else if (progressFn === 'updateWeaponProgress') updateWeaponProgress();
 }
 
 // — Progress bars —
@@ -2569,9 +2623,15 @@ function updateReinstateProgress() {
     document.getElementById('re-service-length'), document.getElementById('re-divisions'),
     document.getElementById('re-departure-status'),
     document.getElementById('re-disciplinary'),
-    ...REINSTATEMENT_QUESTIONS.map((_,i) => document.getElementById('rq-'+i))
+    ...REINSTATEMENT_QUESTIONS.map((item,i) => {
+      if (item.yesno) {
+        const val = document.getElementById('rq-'+i+'-val');
+        return val && val.value ? { value: val.value } : null;
+      }
+      return document.getElementById('rq-'+i);
+    })
   ];
-  const filled = fields.filter(f => f && f.value.trim().length >= 2).length;
+  const filled = fields.filter(f => f && f.value && f.value.trim().length >= 1).length;
   const count = Math.min(filled, TOTAL);
   document.getElementById('reinstatement-progress-count').textContent = count + ' / ' + TOTAL + ' answered';
   document.getElementById('reinstatement-progress-bar').style.width = Math.round(count / TOTAL * 100) + '%';
@@ -3092,10 +3152,27 @@ async function submitReinstateApp() {
     toast('Please complete all background information fields.', 'warning'); return;
   }
 
-  const answers = REINSTATEMENT_QUESTIONS.map((_,i) => (document.getElementById('rq-'+i)?.value||'').trim());
-  const emptyIdx = answers.findIndex(a => a.length < 10);
-  if (emptyIdx !== -1) {
-    toast('Reinstatement Question ' + (emptyIdx+1) + ' needs a more complete answer.', 'warning'); return;
+  const answers = REINSTATEMENT_QUESTIONS.map((item,i) => {
+    if (item.yesno) {
+      const val = (document.getElementById('rq-'+i+'-val')?.value||'').trim().toLowerCase();
+      if (!val) return '';
+      const explanation = (document.getElementById('rq-'+i)?.value||'').trim();
+      return (val === 'yes' ? 'Yes' : 'No') + (explanation ? ' — ' + explanation : '');
+    }
+    return (document.getElementById('rq-'+i)?.value||'').trim();
+  });
+
+  // Validate: yes/no questions require a selection; non-yesno require text
+  for (let i = 0; i < REINSTATEMENT_QUESTIONS.length; i++) {
+    const item = REINSTATEMENT_QUESTIONS[i];
+    if (item.yesno) {
+      const val = (document.getElementById('rq-'+i+'-val')?.value||'').trim();
+      if (!val) { toast('Please select Yes or No for Reinstatement Question ' + (i+1) + '.', 'warning'); return; }
+      const explanation = (document.getElementById('rq-'+i)?.value||'').trim();
+      if (explanation.length < 5) { toast('Please explain your answer for Reinstatement Question ' + (i+1) + '.', 'warning'); return; }
+    } else {
+      if (!answers[i] || answers[i].length < 10) { toast('Reinstatement Question ' + (i+1) + ' needs a more complete answer.', 'warning'); return; }
+    }
   }
 
   const btn = document.getElementById('reinstatement-submit-btn');
@@ -3759,7 +3836,7 @@ function _lbKeyHandler(e) { if (e.key === 'Escape') closePhotoLightbox(); }
             <option>Special Weapons And Tactics (SWAT)</option>
             <option>Gang and Narcotics Division (GND)</option>
             <option>Internal Affairs (IA)</option>
-            <option>Training &amp; Employment Division (FTO)</option>
+            <option>Field &amp; Training Officer (FTO)</option>
             <option>Traffic Enforcement Unit (TEU)</option>
             <option>Firearm Licensing</option>
           </select>
